@@ -1,0 +1,37 @@
+
+# Arquivos de Byte Python
+__pycache__/
+*.py[cod]
+
+# Ambiente virtual
+venv/
+env/
+
+# Arquivos de log
+*.log
+
+# Arquivos de configuração
+*.ini
+
+# Dependências Node.js
+node_modules/
+
+# Arquivos gerados pelo sistema operacional
+.DS_Store
+Thumbs.db
+
+# Arquivos de configuração do ambiente
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Dependências de desenvolvimento globais
+/.yarn/
+
+# Dependências de desenvolvimento do Visual Studio Code (se estiver usando o VSCode)
+.vscode/
+
+
+
