@@ -66,14 +66,14 @@ class Alunos(Base):
 
 class Professor(Base):
     __tablename__= 'professor'
-    idProfessor = Column(Integer, primary_key=True)
+    idProfessor = Column(Integer, primary_key=True, autoincrement=True)
     idUsuario = Column(Integer, ForeignKey('user.idUsuario'))
     #adicionar mais campos se necessario
 
 class Disciplina(Base):
 
     __tablename__= 'disciplina'
-    idDisciplina = Column(Integer, primary_key=True)
+    idDisciplina = Column(Integer, primary_key=True, autoincrement=True)
     idProfessor = Column(Integer, ForeignKey('professor.idProfessor'))
     cdgDisciplina = Column(String(8))
     nome = Column(String(30))
@@ -84,9 +84,13 @@ class AlunoDisciplina(Base):
     idaluno = Column(Integer, ForeignKey('alunos.idAluno'), primary_key= True)
 
 class Conteudo(Base):
-    __tablename__= 'conteudo'
+    __tablename__= 'conteudo' 
     idDiciplina = Column(Integer, ForeignKey('disciplina.idDisciplina'),primary_key=True)
-    idaluno = Column(Integer, ForeignKey('alunos.idAluno'), primary_key= True)
+    idConteudo = Column(Integer, primary_key= True, autoincrement=True)
+    link = Column(Text)
+    nome = Column(Text)
+    
+   
 
 
 
@@ -250,7 +254,7 @@ def atualizar_aluno():
 
   ###################### Professor ##############################  
 
-@app.route('/cadastro/professor', methods = ['GET','POST'])#rota de cadastro de usuario
+@app.route('/cadastro/professor', methods = ['GET','POST'])
 def cadastro_professor():  
 
     if request.method == 'POST':
@@ -269,7 +273,7 @@ def cadastro_professor():
     
 ###################### Diciplina ##############################
     
-@app.route('/cadastro/disciplina', methods = ['GET','POST'])#rota de cadastro de usuario
+@app.route('/cadastro/disciplina', methods = ['GET','POST'])
 def cadastro_disciplina():  
 
     if request.method == 'POST':
@@ -288,7 +292,30 @@ def cadastro_disciplina():
         
         return  redirect(url_for('home'))
     
-@app.route('/cadastro/AlunoDisciplina', methods = ['GET','POST'])#rota de cadastro de usuario
+@app.route('/atualizar/disciplina', methods = ['GET','POST'])
+def cadastro_disciplina():  
+
+    if request.method == 'POST':
+        session = Session()
+        disciplina = session.query(Disciplina).get(1) # o "1" é o id da diciplina a ser alterada
+
+        if disciplina:
+            # Atualize os campos do usuário diretamente no banco de dados
+            disciplina.idProfessor =1
+            disciplina.cdgDisciplina = "111"
+            disciplina.nome = "nome da diciplina"
+            
+
+            # Não é necessário chamar session.add() neste caso, pois o usuário já existe na sessão.
+
+            # Salve as alterações diretamente no banco de dados
+            session.commit()
+
+            return redirect(url_for('home'))
+    
+
+    
+@app.route('/cadastro/AlunoDisciplina', methods = ['GET','POST'])
 def cadastro_alunoDisciplina():
 
 
@@ -309,8 +336,7 @@ def cadastro_alunoDisciplina():
 ######################  ##############################
 
 @app.route('/home')
-def home():
-    
+def home():    
 
     return render_template('home.html')
     
