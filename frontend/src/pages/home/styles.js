@@ -1,72 +1,82 @@
 import styled from 'styled-components';
 import { colors } from '../../settings/colors/colors';
 
-export const Header = styled.header`
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 20px 50px;
-  background-color: ${colors.primaryDark};
-  
-  img {
-    height: 50px; // Suposição de tamanho. Ajuste conforme necessário.
-  }
-`;
-
-export const MainBanner = styled.section`
-  padding: 100px 50px;
-  background-color: ${colors.primaryDark};
+export const PageContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  
-  h1 {
-    font-size: 2em;
-    color: ${colors.light};
-    text-align: center;
-    margin-bottom: 20px;
-  }
-  
-  p {
-    color: ${colors.light};
-    margin-bottom: 40px;
-  }
 `;
 
-export const CategoryButtons = styled.div`
+export const Header = styled.header`
+  background-color: ${colors.primaryDark};
+  width: 100%;
+  height: 400px;
+  text-align: center;
+`;
+
+export const Title = styled.h1`
+  color: ${colors.white};
+`;
+
+export const Subtitle = styled.h2`
+  color: ${colors.white};
+`;
+
+export const SubjectsContainer = styled.div`
+  background-color: ${colors.white};
+  border-radius: 10px;
+  box-shadow: 0 0 10px ${colors.primaryDark};
+  width: 70%;
+  position: relative;
+  margin-top: -50px;
+  margin-bottom: 50px;
+  padding: 20px;
+
   display: flex;
-  justify-content: space-around;
   flex-wrap: wrap;
-  padding: 50px;
+  justify-content: center;
+  flex-direction: column;
 `;
 
-export const TopicsCarousel = styled.section`
-  padding: 50px;
+export const CardsContainer = styled.div`
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  margin: 20px;
+`;
+
+export const SubjectCard = styled.div`
+  background-color: ${colors.secondary};
+  color: ${colors.white};
+  padding: 10px;
+  border-radius: 8px;
+  width: 200px;
+  height: 120px;
+  box-shadow: 0 2px 4px 0 rgba(0,0,0,0.5);
+
   display: flex;
-  justify-content: space-between;
-  overflow-x: scroll;
-  
-  // Estilo básico para itens individuais no carrossel.
-  // Adicione mais estilos ou componentes conforme necessário.
-  div {
-    flex: 0 0 auto;
-    width: 250px; // Suposição de tamanho.
-    height: 300px; 
-    background-color: ${colors.light};
-    margin-right: 20px;
-    border-radius: 10px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-
-    h2 {
-      font-size: 1.5em;
-    }
-
-    p {
-      color: ${colors.secondary};
-    }
-  }
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
 `;
 
+export const SubjectLink = styled.a`
+  color: ${colors.primaryDark};
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 20px;
+  margin: 10px;
+  text-align: center;
+`;
+
+export const Footer = styled.footer`
+  background-color: ${colors.primary};
+  width: 100%;
+  text-align: center;
+  bottom: 0;
+`;
+
+export const FooterText = styled.p`
+  color: ${colors.white};
+`;
