@@ -1,0 +1,26 @@
+Ativar flask - 
+ python -m venv venv
+.\venv\Scripts\Activate.ps1
+
+flask run
+//////////////
+mysql -u root -p
+//////////////
+migrar banco
+$env:FLASK_APP = "app.py"
+flask db migrate -m "Adicionar tabela Post"
+flask db upgrade
+
+
+  insert into enum_acesso(id, nivel_acesso )
+   values(100, 'admin');
+ 
+
+insert into user(nome , email, cpf, telefone, username, password, acesso_id)
+values('adiministrador', 'adm@gmail.com', '000000000','9999999', 'admin', 'admin', 100);
+
+
+insert into user(nome , email, cpf, telefone, username, password, acesso_id)
+values('vitor campos', 'aaaa@gmail.com', '000000000','9999999', 'vitor', '1234', 1);
+
+

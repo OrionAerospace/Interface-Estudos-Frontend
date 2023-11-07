@@ -1,0 +1,107 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #333442;
+}
+
+.container {
+    width: 1000px;    
+    margin: 50px auto;
+    background-color: #6f6e7c;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+form {
+    display: flex;
+    flex-direction: column;
+}
+h1 {
+    text-align: center;
+}
+
+
+.menu {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+}
+
+.menu li {
+    cursor: pointer;
+    padding: 10px 20px;
+    background-color: #f2f2f2;
+    border: 1px solid #ccc;
+    border-radius: 5px 5px 0 0;
+}
+
+.menu li:hover {
+    background-color: #ddd;
+}
+
+.tab-content {
+    display: none;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-top: none;
+}
+
+.tab-content h2 {
+    margin-top: 0;
+}
+
+button {
+    padding: 10px;
+    background-color: #007BFF;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+select {
+    width: 200px; /* Defina a largura desejada para o menu de seleção */
+    font-size: 16px; /* Ajuste o tamanho da fonte para o texto do menu */
+    padding: 5px; /* Adicione um espaçamento interno para melhorar a aparência */
+    border: 1px solid #ccc; /* Adicione uma borda para melhorar a visibilidade */
+    border-radius: 5px; /* Adicione bordas arredondadas para melhorar a aparência */
+}
+label {
+    font-weight: bold;
+}
+
+input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th, td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: center;
+}
+
+th {
+    background-color: #f2f2f2;
+}
+
+.available {
+    background-color: #c1f0c1;
+}
+
+.unavailable {
+    background-color: #f0c1c1;
+}
