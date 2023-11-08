@@ -176,6 +176,22 @@ def atualizar_usuario():
             return redirect(url_for('home'))
         
 
+@app.route('/apagar/usuario/', methods=['POST'])
+def apagar_usuario():
+    if request.method == 'POST':
+        session = Session()
+        usuario = session.query(User).get(3)
+
+        if usuario:
+            # Remova o usuário da sessão e do banco de dados
+            session.delete(usuario)
+            session.commit()
+
+            return redirect(url_for('home'))
+        
+    return redirect(url_for('home')) # trocar por messagem de erro
+        
+
 
  ###################### Aluno ##############################
 
@@ -259,7 +275,7 @@ def cadastro_professor():
 
     if request.method == 'POST':
 
-        idUsuario = 0 #pega o id do usuario  cadastrado    
+        idUsuario = 5 #pega o id do usuario  cadastrado    
         
         #adicionar mais campos se necessario
 
@@ -278,9 +294,9 @@ def cadastro_disciplina():
 
     if request.method == 'POST':
 
-        idProfessor = 0 # pega o id do professor responsavel pela diciplina  
-        cdgDisciplina = request.form['cdgDisciplina']  
-        nome = request.form['nome']
+        idProfessor = 1 # pega o id do professor responsavel pela diciplina  
+        cdgDisciplina = "A1"  
+        nome = "Calculo 1"
         
         #adicionar mais campos se necessario
 
@@ -293,14 +309,14 @@ def cadastro_disciplina():
         return  redirect(url_for('home'))
     
 @app.route('/atualizar/disciplina', methods = ['GET','POST'])
-def cadastro_disciplina():  
+def atualizar_disciplina():  
 
     if request.method == 'POST':
         session = Session()
         disciplina = session.query(Disciplina).get(1) # o "1" é o id da diciplina a ser alterada
 
         if disciplina:
-            # Atualize os campos do usuário diretamente no banco de dados
+            # Atualize os campos de diciplina diretamente no banco de dados
             disciplina.idProfessor =1
             disciplina.cdgDisciplina = "111"
             disciplina.nome = "nome da diciplina"
@@ -312,6 +328,24 @@ def cadastro_disciplina():
             session.commit()
 
             return redirect(url_for('home'))
+        
+
+
+@app.route('/apagar/disciplina/', methods=['POST'])
+def apagar_disciplina(id):
+    if request.method == 'POST':
+        session = Session()
+        disciplina = session.query(User).get(id) #recebe o id da disciplina a ser apagada
+
+        if disciplina:
+            # Remova o  disciplina da sessão e do banco de dados
+            session.delete(disciplina)
+            session.commit()
+
+            return redirect(url_for('home'))
+
+        
+    
     
 
     
