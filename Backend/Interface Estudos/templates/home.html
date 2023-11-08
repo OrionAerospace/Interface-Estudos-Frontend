@@ -13,14 +13,13 @@
     <div class="container">
         <ul class="menu">
             <li class="tab-link" data-tab="cadastro1">Cadastro usuario</li>
-            <li class="tab-link" data-tab="cadastro2">Cadastro Pacientes</li>
-            <li class="tab-link" data-tab="Agendamento">Agendar Consulta</li>
-            <li class="tab-link" data-tab="CancelarConsulta">Cancelar Consulta</li>
+            <li class="tab-link" data-tab="cadastro2">Botao teste</li>
+           
         </ul>
 
         <div id="cadastro1" class="tab-content">
             <!-- Conteúdo do formulário de Cadastro Funcionarios -->
-            <form action="/atualizar/usuario/" method="POST">
+            <form action="/cadastro/usuario" method="POST">
                 <h1>Cadastro Usuario</h1>
                 <div class="form-group">
                     <label for="nome">Nome:</label>
@@ -65,90 +64,18 @@
 
         <div id="cadastro2" class="tab-content">
             <!-- Conteúdo do formulário de Cadastro Pacientes -->
-            <form action="/cadastro/pacientes" method="POST">
-                <h1>Cadastro Pacientes</h1>
-                <div class="form-group">
-                    <label for="nome">Nome:</label>
-                    <input type="text" id="nome" name="nome" required>
-                </div>
-                <div class="form-group">
-                    <label for="telefone">Telefone:</label>
-                    <input type="tel" id="telefone" name="telefone">
-                </div>
-                <div class="form-group">
-                    <label for="data_nascimento">Data de Nascimento:</label>
-                    <input type="date" id="data_nascimento" name="data_nascimento" required>
-                </div>           
-                <div class="form-group">
-                    <label for="convenio">convenio:</label>
-                    <select id="convenio" name="convenio" required>
-                        <option value="" disabled selected>Selecione uma opção</option>
-                        {% for convenio_item in convenio %}
-                        <option value="{{ convenio_item.id }}">{{ convenio_item.nome }}</option>
-                        {% endfor %}
-                    </select>
-                </div>
-
+            <form action="/cadastro/disciplina" method="POST">
+                <h1>Botao Teste</h1>
+                
                 <div class="form-group">
                     <button type="submit">Enviar</button>
                 </div>
 
-                {% if sucesso_message2 %}
-                     <p style="color: green;">{{ sucesso_message2 }}</p>
-                {% endif %}
             </form>
         </div>
     </div>
 
-    <div id="Agendamento" class="tab-content">
-        <form action="/agendar" method="POST" id="appointmentForm">
-            
-            <div class="container">
-                <h1>Agendar Consulta</h1>
-                <h2>Escolha um Médico</h2>
-                <label for="id_medico">Médico:</label>
-                <select id="id_medico" name="id_medico" required>
-                    <option value="" disabled selected>Selecione um médico</option>
-                    {% for medico in medicos %}
-                        <option value="{{ medico.id }}">{{ medico.nome }}</option>
-                    {% endfor %}
-                </select>
-        
-                <h2>Escolha um Dia</h2>
-                <label for="data">Data da Consulta:</label>
-                <input type="date" id="data" name="data" required>
-        
-                <h2>Horários Disponíveis</h2>
-                <table id="horariosTable">
-                    <thead>
-                        <tr>
-                            <th>Hora</th>
-                            <th>Disponibilidade</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <!-- Os horários disponíveis serão preenchidos aqui -->
-                    </tbody>
-                </table>      
-                
-                <h2>Agendar Horário</h2>
-                
-                    <select id="id_paciente" name="id_paciente" required>
-                        <option value="" disabled selected>Selecione um paciente</option>
-                        {% for paciente in paciente %}
-                            <option value="{{ paciente.id }}">{{ paciente.nome }}</option>
-                        {% endfor %}
-                    </select>
-        
-                    <label for="selectedTime">Horário Selecionado:</label>
-                    <select id="horarios" name="horario" required>
-                        <option value="" disabled selected>Selecione um horário</option>
-                        <!-- As opções serão preenchidas dinamicamente -->
-                    </select>
-        
-                    <button type="submit">Agendar</button>
-                </div>
-            </form>
+    
 
         
     </div>
