@@ -1,3 +1,5 @@
+# pipenv lock file
+*.lock
 
 # Arquivos de Byte Python
 __pycache__/
