@@ -4,7 +4,7 @@ services:
   estudo_app:
     container_name: estudo_app
     image: api_estudos_image
-    build:
+    build: .
     ports:
       - 13000:3000
     environment:
