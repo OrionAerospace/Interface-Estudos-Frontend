@@ -11,6 +11,7 @@ marshmallow-sqlalchemy = "*"
 flask-migrate = "*"
 pyjwt = "*"
 psycopg2-binary = "*"
+flask-cors = "*"
 
 [dev-packages]
 
