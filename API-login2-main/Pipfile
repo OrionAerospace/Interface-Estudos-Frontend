@@ -9,8 +9,8 @@ flask-sqlalchemy = "*"
 flask-marshmallow = "*"
 marshmallow-sqlalchemy = "*"
 flask-migrate = "*"
-pymysql = "*"
 pyjwt = "*"
+psycopg2-binary = "*"
 
 [dev-packages]
 
