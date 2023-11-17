@@ -6,10 +6,6 @@ import {useNavigate} from "react-router-dom"
 
 const Home = () => {
   const navigate = useNavigate()
-  const HandleCadastroClick = () => {
-    
-    navigate("/cadastro")
-  };
 
   return (
     <>
@@ -17,7 +13,7 @@ const Home = () => {
         <Header>
           <Title>Interface de Estudos de Cálculo</Title>
           <Subtitle>Aprenda cálculo, física e muito mais!</Subtitle>
-          <Button label={"Cadastrar"} onClick={HandleCadastroClick}></Button>
+          <Button label={"Cadastrar"} onClick={()=> navigate("/cadastro")}></Button>
         </Header>
         <SubjectsContainer>
           <Carousel />
