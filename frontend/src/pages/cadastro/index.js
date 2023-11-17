@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
-//import PropTypes from 'prop-types';
+import { useNavigate } from 'react-router-dom';
 import { Container, LeftSection, RightSection, Label, Input } from './styles';
 import Button from '../../components/button';
 import axios from 'axios';
 
 const Cadastro = () => {
-
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     name: '',
     username:'',
@@ -44,7 +44,7 @@ const Cadastro = () => {
         <h2>ORION</h2>
         <p>Já tem uma conta?</p>
         <p>Entre em sua conta para checar seus resultados!</p>
-        <Button label={"Entrar"} />
+        <Button label={"Entrar"} onClick={()=>navigate("/login")}/>
       </LeftSection>
       <RightSection onSubmit={handleSubmit}>
         <Label>Criar Conta</Label>
