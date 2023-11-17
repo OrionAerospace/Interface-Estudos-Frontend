@@ -30,7 +30,7 @@ export const Logo = styled.img`
     margin-bottom: 20px;
 `;
 
-export const RightSection = styled.div`
+export const RightSection = styled.form`
     display: flex;
     flex-direction: column;
     width: 60vw;
