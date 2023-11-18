@@ -1,26 +1,22 @@
-Ativar flask - 
- python -m venv venv
-.\venv\Scripts\Activate.ps1
+Ativar flask:
+  python -m venv venv
+  .\venv\Scripts\Activate.ps1
+  pip install flask
+  flask run
 
-flask run
-//////////////
-mysql -u root -p
-//////////////
-migrar banco
-$env:FLASK_APP = "app.py"
-flask db migrate -m "Adicionar tabela Post"
-flask db upgrade
+Acesso ao MySQL:
+  pip install sqlalchemy
+  pip install mysql-connector-python
+  mysql -u root -p
 
+Migrar banco:
+  $env:FLASK_APP = "app.py"
+  pip install Flask-Migrate
+  flask db init
+  flask db migrate -m "Adicionar tabela Post"
+  flask db upgrade
 
-  insert into enum_acesso(id, nivel_acesso )
-   values(100, 'admin');
- 
-
-insert into user(nome , email, cpf, telefone, username, password, acesso_id)
-values('adiministrador', 'adm@gmail.com', '000000000','9999999', 'admin', 'admin', 100);
-
-
-insert into user(nome , email, cpf, telefone, username, password, acesso_id)
-values('vitor campos', 'aaaa@gmail.com', '000000000','9999999', 'vitor', '1234', 1);
-
-
+Inserção de dados:
+insert into enum_acesso(id, nivel_acesso ) values(100, 'admin');
+insert into user(nome , email, cpf, telefone, username, password, acesso_id) values('adiministrador', 'adm@gmail.com', '000000000','9999999', 'admin', 'admin', 100);
+insert into user(nome , email, cpf, telefone, username, password, acesso_id) values('vitor campos', 'aaaa@gmail.com', '000000000','9999999', 'vitor', '1234', 100);

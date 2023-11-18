@@ -3,19 +3,24 @@ from sqlalchemy import create_engine, Column, Integer, String, Date, Text, Forei
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import relationship, sessionmaker, scoped_session
 from datetime import datetime, timedelta
+from flask_sqlalchemy import SQLAlchemy
+from flask_migrate import Migrate
 
 import os
-
 
 app = Flask(__name__)
 app.secret_key = '1234567890'
 
 # Configuração do SQLAlchemy
-engine = create_engine('mysql+mysqlconnector://root:@localhost/InterfaceEstudos') #endereco banco de dados
+app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+mysqlconnector://root:admin@localhost/InterfaceEstudos'
+engine = create_engine(app.config['SQLALCHEMY_DATABASE_URI'])
+
+db = SQLAlchemy(app)
+migrate = Migrate(app, db)
+
 Base = declarative_base()
 Session = scoped_session(sessionmaker(bind=engine))
 Base.query = Session.query_property()
-
 
 class EnumAcesso(Base):
     __tablename__ = 'enum_acesso'
@@ -36,7 +41,6 @@ class User(Base):
 
 class Responsavel(Base):
     __tablename__ = 'responsavel'
-
     idResponsavel = Column(Integer, primary_key=True, autoincrement=True)
     nome = Column(String(50))
     telefone = Column(String(20))
@@ -44,7 +48,6 @@ class Responsavel(Base):
 
 class Endereco(Base):
     __tablename__ = 'endereco'
-
     idEndereco = Column(Integer, primary_key=True, autoincrement=True)
     cep = Column(String(20))
     rua = Column(String(60))
@@ -61,17 +64,13 @@ class Alunos(Base):
     serie = Column(String(8))
     pretProfissional = Column(String(60))
     idEndereco = Column(Integer,ForeignKey('endereco.idEndereco'))   
-    
-    
 
 class Professor(Base):
     __tablename__= 'professor'
     idProfessor = Column(Integer, primary_key=True, autoincrement=True)
     idUsuario = Column(Integer, ForeignKey('user.idUsuario'))
-    #adicionar mais campos se necessario
 
 class Disciplina(Base):
-
     __tablename__= 'disciplina'
     idDisciplina = Column(Integer, primary_key=True, autoincrement=True)
     idProfessor = Column(Integer, ForeignKey('professor.idProfessor'))
@@ -90,19 +89,12 @@ class Conteudo(Base):
     link = Column(Text)
     nome = Column(Text)
     
-   
-
-
-
-
-### criando tabelas no banco
+### Descomente para criar as tabelas no banco
 '''
 Base.metadata.create_all(engine)  
 Session = sessionmaker(bind=engine)
 session = Session()
 '''
-
-
 
 @app.route('/', methods=['GET', 'POST'])
 def login():   
@@ -367,20 +359,11 @@ def cadastro_alunoDisciplina():
  
     
 
-######################  ##############################
+###################### Inicialização do app ######################
 
 @app.route('/home')
-def home():    
-
+def home():
     return render_template('home.html')
-    
-
-
-    
-
 
 if __name__ == '__main__':
     app.run(debug=True)
-
-
-
