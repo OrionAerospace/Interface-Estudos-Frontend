@@ -1,16 +1,18 @@
 import React from 'react';
-//import PropTypes from 'prop-types';
 import { Container, LeftSection, RightSection, Label, Input } from './styles';
 import Button from '../../components/button';
+import {useNavigate} from 'react-router-dom'
 
 const Login = () => {
+  const navigate = useNavigate();
+
   return (
     <Container>
       <LeftSection>
         <h2>ORION</h2>
         <p>Ainda não tem uma conta?</p>
         <p>Crie uma conta para acessar seus resultados!</p>
-        <Button label={"Cadastrar"} />
+        <Button label={"Cadastrar"} onClick={()=>navigate("/cadastro")}/>
       </LeftSection>
       <RightSection>
         <Label>Login</Label>

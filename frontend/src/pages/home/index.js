@@ -2,15 +2,18 @@ import React from 'react';
 import {PageContainer, Header, Title, Subtitle, SubjectsContainer, CardsContainer, SubjectCard, SubjectLink, Footer, FooterText } from './styles';
 import Button from '../../components/button';
 import Carousel from '../../components/carousel';
+import {useNavigate} from "react-router-dom"
 
-function Home() {
+const Home = () => {
+  const navigate = useNavigate()
+
   return (
     <>
       <PageContainer>
         <Header>
           <Title>Interface de Estudos de Cálculo</Title>
           <Subtitle>Aprenda cálculo, física e muito mais!</Subtitle>
-          <Button label={"Cadastrar"}></Button>
+          <Button label={"Cadastrar"} onClick={()=> navigate("/cadastro")}></Button>
         </Header>
         <SubjectsContainer>
           <Carousel />
