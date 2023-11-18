@@ -6,6 +6,7 @@ import Cadastro from './pages/cadastro';
 import Login from './pages/login';
 import Main from './pages/main';
 import Profile from './pages/profile';
+import CreateDisc from './pages/createDisc';
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 
@@ -19,6 +20,7 @@ root.render(
         <Route path="/login" element={<Login />} />
         <Route path="/my" element={<Main />} />
         <Route path="/perfil" element={<Profile />} />
+        <Route path="/disciplinas/criar" element={<CreateDisc />} />
       </Routes>
     </Router>
   </React.StrictMode>
