@@ -69,3 +69,25 @@ def cadastro_alunoDisciplina():
         session = Session()
         session.add(novo_cadastro)
         session.commit()
+
+
+
+#rota de litagem da disciplina
+@disciplina_bp.route('/listar_disciplinas', methods=['GET'])
+def listar_disciplinas():
+    session = Session()
+    disciplinas = session.query(Disciplina).all()
+
+    # Transforma os objetos Disciplina em um formato que pode ser jsonify
+    disciplinas_list = [
+        {
+            'id': disciplina.id,
+            'idProfessor': disciplina.idProfessor,
+            'cdgDisciplina': disciplina.cdgDisciplina,
+            'nome': disciplina.nome,
+            # campos de diciplina
+        }
+        for disciplina in disciplinas
+    ]
+
+    return jsonify(disciplinas_list)
