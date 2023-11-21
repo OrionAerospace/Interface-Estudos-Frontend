@@ -12,6 +12,7 @@ app = Flask(__name__)
 app.secret_key = '1234567890'
 app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+mysqlconnector://root:admin@localhost/InterfaceEstudos'
 
+
 # Configuração do SQLAlchemy
 engine = create_engine(app.config['SQLALCHEMY_DATABASE_URI'])
 db = SQLAlchemy(app)
@@ -26,6 +27,7 @@ app.register_blueprint(aluno.aluno_bp)
 app.register_blueprint(disciplina.disciplina_bp)
 app.register_blueprint(professor.professor_bp)
 app.register_blueprint(usuario.usuario_bp)
+
 
 if __name__ == '__main__':
     app.run(debug=True)
