@@ -77,8 +77,24 @@ class Conteudo(Base):
     __tablename__= 'conteudo' 
     idDiciplina = Column(Integer, ForeignKey('disciplina.idDisciplina'),primary_key=True)
     idConteudo = Column(Integer, primary_key= True, autoincrement=True)
-    link = Column(Text)
-    nome = Column(Text)
+    nome = Column(String(50))
+
+class VideoAula(Base):
+     __tablename__= 'videoAula'
+     idVideo = Column(Integer, primary_key=True, autoincrement=True)
+     idDiciplina = Column(Integer, ForeignKey('disciplina.idDisciplina'),primary_key=True)
+     titulo = Column(String(50))
+     link= Column(Text)
+
+class Exercicios(Base);
+    __tablename__ = 'exercicios'
+    idExercicios = Column(Integer, primary_key=True, autoincrement=True)
+    idDiciplina = Column(Integer, ForeignKey('disciplina.idDisciplina'),primary_key=True)
+
+    #add campos necessarios para os exercicios
+    
+
+
     
 ### Descomente para criar as tabelas no banco
 '''
