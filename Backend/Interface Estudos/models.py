@@ -82,16 +82,15 @@ class Conteudo(Base):
 class VideoAula(Base):
      __tablename__= 'videoAula'
      idVideo = Column(Integer, primary_key=True, autoincrement=True)
-     idDiciplina = Column(Integer, ForeignKey('disciplina.idDisciplina'),primary_key=True)
+     idConteudo = Column(Integer, ForeignKey('conteudo.idDConteudo'),primary_key=True)
      titulo = Column(String(50))
      link= Column(Text)
 
-class Exercicios(Base);
+class Exercicios(Base):
     __tablename__ = 'exercicios'
     idExercicios = Column(Integer, primary_key=True, autoincrement=True)
     idDiciplina = Column(Integer, ForeignKey('disciplina.idDisciplina'),primary_key=True)
-
-    #add campos necessarios para os exercicios
+    #add campos necessarios para os exercicios / definir como sera registrado as perguntas e respostas
     
 
 
