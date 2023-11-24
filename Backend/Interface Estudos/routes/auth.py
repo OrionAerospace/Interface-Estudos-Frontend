@@ -6,6 +6,7 @@ from datetime import datetime, timedelta
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
 
+
 import os
 from flask import Blueprint, render_template, redirect, url_for, request, session
 
@@ -34,6 +35,6 @@ def logout():
     return redirect(url_for('auth.login'))
 
 # Rotas comuns a todos os blueprints
-@app.route('/home')
+@auth_bp.route('/home')
 def home():
     return render_template('home.html')
