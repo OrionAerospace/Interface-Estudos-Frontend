@@ -1,0 +1,77 @@
+/* Estilos globais (pode ser em um arquivo .css separado) */
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+/* Estilos para o container principal */
+.Container {
+    display: flex;
+    width: 100vw;
+    height: 100vh;
+    background-color: #e5e5e5;
+    background-size: 48px 48px;
+    background-image: repeating-linear-gradient(0deg, #3498db, #3498db 1.8px, #f1c40f 1.8px, #f1c40f);
+}
+
+/* Estilos para a seção esquerda */
+.LeftSection {
+    display: flex;
+    flex-direction: column;
+    width: 40vw;
+    height: 100vh;
+    margin-right: 10px;
+    background-color: #2980b9;
+    color: #ecf0f1;
+    justify-content: center;
+    align-items: center;
+    border-radius: 0px 20px 20px 0px;
+    box-shadow: 0px 0px 10px 1px rgba(0, 0, 0, 0.75);
+}
+
+/* Estilos para o logotipo */
+.Logo {
+    width: 100px;
+    height: 100px;
+    margin-bottom: 20px;
+}
+
+/* Estilos para a seção direita */
+.RightSection {
+    display: flex;
+    flex-direction: column;
+    width: 60vw;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Estilos para o rótulo */
+.Label {
+    font-family: 'Caveat', cursive;
+    font-size: 50px;
+    margin: 0;
+    margin-top: -35px;
+    margin-bottom: 3px;
+}
+
+/* Estilos para o campo de entrada */
+.Input {
+    width: 300px;
+    padding: 15px;
+    margin: 9.8px 0;
+    border-radius: 5px;
+    border: 1.8px solid #3498db;
+}
+
+/* Estilos para o botão */
+.Button {
+    padding: 10px 20px;
+    margin-top: 15px;
+    background-color: #3498db;
+    color: #ecf0f1;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}

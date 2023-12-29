@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="login.css"> <!-- Adicione esta linha para vincular o CSS -->
+    <title>Login Test</title>
+</head>
+<body>
+    <div class="Container">
+        <div class="LeftSection">
+            <h2>ORION</h2>
+            <p>Ainda não tem uma conta?</p>
+            <p>Crie uma conta para acessar seus resultados!</p>
+            <button>Cadastrar</button>
+        </div>
+        <form id="loginForm">
+        <div class="RightSection">
+                <label>Login</label>
+                <input class="Input" type="email" id="email" placeholder="Email" required title="Por favor, preencha o campo de email." />
+                <input class="Input" type="password" id="password" placeholder="Senha" required title="Por favor, preencha o campo de senha." />
+                <button class="Button" id="loginButton">Entrar</button>
+       
+            <p id="error-message" style="color: red;"></p>
+        </div>
+    </form>   
+    </div>
+<script src="login.js"></script>
+</body>
+</html>
