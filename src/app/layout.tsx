@@ -1,6 +1,6 @@
 import type { Metadata } from 'next'
 import { Poppins, Caveat } from 'next/font/google'
-import './globals.scss'
+import '@/styles/globals.scss'
 import { Providers } from '@/providers'
 
 const poppins = Poppins({
@@ -22,7 +22,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en">
+    <html lang="pt-BR">
       <body className={`${poppins.variable} ${caveat.variable}`}>
         <Providers>{children}</Providers>
       </body>
