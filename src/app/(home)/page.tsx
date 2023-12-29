@@ -1,6 +1,5 @@
 import styles from './styles.module.scss'
 import Link from 'next/link'
-import { Button } from '@/components/Button'
 import { Carousel } from '@/screens/Home/Caroussel'
 
 export default function Home() {
@@ -9,7 +8,7 @@ export default function Home() {
       <header className={styles['header']}>
         <h1>Interface de Estudos de Cálculo</h1>
         <h2>Aprenda cálculo, física e muito mais!</h2>
-        <Button>Cadastrar</Button>
+        <Link href="/cadastro">Cadastrar</Link>
       </header>
       <div className={styles['subjects-container']}>
         <Carousel />
