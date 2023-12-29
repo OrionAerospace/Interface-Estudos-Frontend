@@ -23,6 +23,10 @@ const config: Config = {
         white: '#ffffff',
         gray: '#a5a5a5',
       },
+      fontFamily: {
+        poppins: 'var(--font-poppins)',
+        caveat: 'var(--font-caveat)',
+      },
       boxShadow: {
         default: '0 2px 10px',
         hover: '0 4px 15px',

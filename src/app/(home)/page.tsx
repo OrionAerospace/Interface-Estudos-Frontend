@@ -3,7 +3,7 @@ import Link from 'next/link'
 import { Button } from '@/components/Button'
 import { Carousel } from '@/screens/Home/Caroussel'
 
-const Home = () => {
+export default function Home() {
   return (
     <div className={styles['page-container']}>
       <header className={styles['header']}>
@@ -28,7 +28,3 @@ const Home = () => {
     </div>
   )
 }
-
-//Home.propTypes = {};
-
-export default Home
