@@ -1,43 +1,36 @@
-# pipenv lock file
-*.lock
+# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
-# Arquivos de Byte Python
-__pycache__/
-*.pyc
-*.pyo
-*.pyd
+# dependencies
+/node_modules
+/.pnp
+.pnp.js
+.yarn/install-state.gz
 
-*.py[cod]
+# testing
+/coverage
 
-# Ambiente virtual
-venv/
-env/
+# next.js
+/.next/
+/out/
 
-# Arquivos de log
-*.log
+# production
+/build
 
-# Arquivos de configuração
-*.ini
-
-# Dependências Node.js
-node_modules/
-
-# Arquivos gerados pelo sistema operacional
+# misc
 .DS_Store
-Thumbs.db
+*.pem
 
-# Arquivos de configuração do ambiente
-.env
-.env.local
-.env.development.local
-.env.test.local
-.env.production.local
+# debug
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
 
-# Dependências de desenvolvimento globais
-/.yarn/
+# local env files
+.env*.local
 
-# Dependências de desenvolvimento do Visual Studio Code (se estiver usando o VSCode)
-.vscode/
+# vercel
+.vercel
 
-
-
+# typescript
+*.tsbuildinfo
+next-env.d.ts

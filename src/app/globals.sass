@@ -1,0 +1,25 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --primary: #35b2f8;
+  --primary-dark: #05053d;
+  --primary-light: #aedff7;
+  --secondary: #fdd05d;
+  --green: #00a76d;
+  --info: #2c8ced;
+  --success: #60c466;
+  --warning: #ffa13d;
+  --error: #ff6b6b;
+  --light: #f9f9f9;
+  --dark: #2c3e63;
+  --white: #ffffff;
+  --gray: #a5a5a5;
+}
+
+body {
+  color: rgb(var(--foreground-rgb));
+  background: linear-gradient(to bottom, transparent, rgb(var(--background-end-rgb)))
+    rgb(var(--background-start-rgb));
+}
