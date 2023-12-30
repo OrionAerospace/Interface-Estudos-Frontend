@@ -12,7 +12,7 @@ import { loginFormDataSchema } from '@/zod/schemas/loginFormDataSchema'
 
 type loginFormData = z.infer<typeof loginFormDataSchema>
 
-export default function Cadastro() {
+export default function Login() {
   const registerUserForm = useForm<loginFormData>({
     resolver: zodResolver(loginFormDataSchema),
   })

@@ -12,7 +12,7 @@ import Link from 'next/link'
 
 type registerFormData = z.infer<typeof registerFormDataSchema>
 
-export default function Cadastro() {
+export default function Register() {
   const registerUserForm = useForm<registerFormData>({
     resolver: zodResolver(registerFormDataSchema),
   })
