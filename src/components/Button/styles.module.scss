@@ -1,0 +1,19 @@
+.button {
+  @apply shadow-primary/50 shadow-default;
+  background-color: var(--primary);
+  color: var(--white);
+  border: none;
+  padding: 12px 24px;
+  border-radius: 10px;
+  transition: 0.3s ease;
+  font-weight: 500;
+  text-transform: uppercase;
+
+  &:hover {
+    @apply shadow-primary/55 shadow-hover;
+  }
+
+  &:active {
+    background-color: var(--primary-light);
+  }
+}
