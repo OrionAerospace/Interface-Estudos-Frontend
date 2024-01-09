@@ -2,15 +2,21 @@ import { CSSProperties } from 'react'
 import styles from './styles.module.scss'
 
 const subjects = [
-  { icon: 'A', title: 'Física', color: '#FFD700' },
-  { icon: 'B', title: 'Álgebra', color: '#A52A2A' },
-  { icon: 'C', title: 'Probabilidade', color: '#B8860B' },
-  { icon: 'D', title: 'Química', color: '#C0C0C0' },
-  { icon: 'E', title: 'Cálculo', color: '#808080' },
-  { icon: 'F', title: 'Geometria', color: '#008000' },
-  { icon: 'G', title: 'Estatística', color: '#008080' },
+  { icon: 'A', title: 'Álgebra', color: '#FFD700' },
+  { icon: 'C', title: 'Cálculo', color: '#B8860B' },
+  { icon: 'E', title: 'Estatística', color: '#808080' },
+  { icon: 'F', title: 'Física', color: '#008000' },
+  { icon: 'G', title: 'Geometria', color: '#008080' },
+  { icon: 'P', title: 'Probabilidade', color: '#A52A2A' },
+  { icon: 'Q', title: 'Química', color: '#C0C0C0' },
+
   // Adicione mais ícones e títulos conforme necessário
 ]
+
+
+
+
+
 
 export function Carousel() {
   const iconStyle = (index: number) => {

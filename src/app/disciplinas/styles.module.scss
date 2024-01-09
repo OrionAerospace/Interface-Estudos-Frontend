@@ -68,6 +68,9 @@
   margin: 10px;
 }
 
+
+
+
 .search-bar {
   display: flex;
   align-items: center;
@@ -79,6 +82,9 @@
   margin-right: auto;
   margin-top: 10px;
 }
+
+
+
 
 .search-bar input[type="text"] {
   flex: 1;
@@ -97,7 +103,17 @@
   border-radius: 0 0 0 30px;
 }
 
-.notifications-icon,
+.notifications-icon {
+  display: flex;
+  align-items: center;
+  width: 30px;
+  margin-right: 120px;
+}
+
+.notifications-icon img {
+  margin-right: 10px;
+}
+
 .profile-link,
 .options-menu {
   margin-left: 10px;
@@ -106,6 +122,21 @@
 .main-content {
   display: flex;
   flex: 1;
+}
+
+.move-right {
+  margin-left: 20px;
+  padding: 10px 20px;
+  background-color: #007BFF;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.move-right:hover {
+  background-color: #0056b3;
 }
 
 .disciplina-box {
@@ -124,7 +155,10 @@
   font-size: 25px;
   font-weight: 600;
   margin-top: 3px;
+  
 }
+
+
 
 .disciplina-header {
   display: flex;
