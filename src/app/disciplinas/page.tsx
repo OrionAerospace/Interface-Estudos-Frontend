@@ -39,10 +39,9 @@ const Disciplina = () => {
           <input type="text" placeholder="Pesquisar" className={styles['search-bar']} />
           <div className={styles['top-right-bar']}>
             <div className={styles['notifications-icon']}>
-              <img src="/assets/icons/notification.png" alt="Notificações"/>
+              <img src="/assets/icons/notification.png" alt="Notificações" />
               <h1>Notificações</h1>
             </div>
-
             <div className={styles['profile-link']}>Perfil</div>
             <div className={styles['options-menu']}>Opções</div>
           </div>
@@ -51,11 +50,9 @@ const Disciplina = () => {
           <div className={styles['sidebar']}>
             {disciplinas.map((disciplina, index) => (
               <DisciplinaItem key={index} disciplina={disciplina} />
-
             ))}
           </div>
 
-          {/* Renderiza o componente Conteudo se um assunto estiver selecionado */}
           <DisciplinaBox selectedDisciplina={selectedDisciplina} setSelectAssunto={setSelectedAssunto}>
             {selectedAssunto && <Conteudos assunto={selectedAssunto} />}
           </DisciplinaBox>
@@ -72,29 +69,36 @@ const DisciplinaItem = ({ disciplina }: { disciplina: any }) => (
   </div>
 );
 
-const DisciplinaBox = ({ selectedDisciplina, setSelectAssunto, children }: { selectedDisciplina: any, setSelectAssunto: any, children: React.ReactNode }) => (
-  <div className={styles['disciplina-box']}>
-    <div className={styles['disciplina-header']}>
-      <img src={selectedDisciplina.icone} alt="Icon" className={styles['disciplina-icon']} />
-      <h1>{selectedDisciplina.nome}</h1>
-      <button className={styles['move-right']} onClick={() => resetarUseState(setSelectAssunto)}>Voltar</button>
-    </div>
+const DisciplinaBox = ({ selectedDisciplina, setSelectAssunto, children }: { selectedDisciplina: any, setSelectAssunto: any, children: React.ReactNode }) => {
+  const [showButton, setShowButton] = useState(true);
+  const [showAssuntos, setShowAssuntos] = useState(true);
 
-    <div className={styles['assuntos']}>
-      <h1>Todos os assuntos de {selectedDisciplina.nome}</h1>
-      {selectedDisciplina.assuntos.map((assunto: string, index: number) => (
-        <div key={index} className={styles['assunto-card']}>
-          {/* Atualiza o estado selectedAssunto quando o botão é clicado */}
-          <button onClick={() => setSelectAssunto(assunto)}>{assunto}</button>
-        </div>
-      ))}
-    </div>
-    {children}
-  </div>
-);
+  const resetarUseState = (setSelectAssunto: React.Dispatch<React.SetStateAction<string | null>>) => {
+    setSelectAssunto(null);
+    setShowButton(false);
+    setShowAssuntos(true);
+  }
 
-const resetarUseState = (setSelectAssunto: any) => {
-  setSelectAssunto(null);
-}
+
+  return (
+    <div className={styles['disciplina-box']}>
+      <div className={styles['disciplina-header']}>
+        <img src={selectedDisciplina.icone} alt="Icon" className={styles['disciplina-icon']} />
+        <h1>{selectedDisciplina.nome}</h1>
+        {showButton && <button className={styles['move-right']} onClick={() => resetarUseState(setSelectAssunto)}>Voltar</button>}
+      </div>
+
+      {showAssuntos && <div className={styles['assuntos']}>
+        <h1>Todos os assuntos de {selectedDisciplina.nome}</h1>
+        {selectedDisciplina.assuntos.map((assunto: string, index: number) => (
+          <div key={index} className={styles['assunto-card']}>
+            <button onClick={() => { setSelectAssunto(assunto); setShowButton(true); setShowAssuntos(false); }}>{assunto}</button>
+          </div>
+        ))}
+      </div>}
+      {!showAssuntos && children}
+    </div>
+  );
+};
 
 export default Disciplina;
