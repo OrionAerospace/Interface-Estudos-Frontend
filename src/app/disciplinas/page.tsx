@@ -1,7 +1,7 @@
 "use client";
 import React from 'react';
 import { useState } from 'react';
-import Conteudos from '@/components/Conteudos';
+import Conteudos from '@/components/Conteudos/Conteudos';
 import styles from './styles.module.scss'; // Estilos com Sass/SCSS
 import NotificationsIcon from './assets/icons/notification.png';
 
@@ -10,7 +10,12 @@ const Disciplina = () => {
   const disciplinas = [
     {
       nome: 'Cálculo',
-      assuntos: ['Matemática Básica', 'Pré-Cálculo', 'Limites', /* ...outras subdisciplinas*/],
+      assuntos: [
+        "Matemática Básica", 
+        'Pré-Cálculo', 
+        'Limites', 
+        /* ...outras subdisciplinas*/
+      ],
       icone: '/assets/icons/calculo.png'
     },
     {
@@ -26,9 +31,13 @@ const Disciplina = () => {
     // Adicione mais disciplinas conforme necessário
   ];
 
+  
+
   const selectedDisciplina = disciplinas[0]; // Defina a disciplina selecionada dinamicamente
 
   const [selectedAssunto, setSelectedAssunto] = useState();
+
+
   return (
     <div className={styles['main-container']}>
       <div className={styles['content']}>
@@ -70,21 +79,23 @@ const DisciplinaItem = ({ disciplina }: { disciplina: any }) => (
 );
 
 const DisciplinaBox = ({ selectedDisciplina, setSelectAssunto, children }: { selectedDisciplina: any, setSelectAssunto: any, children: React.ReactNode }) => {
-  const [showButton, setShowButton] = useState(true);
+  const [showButton, setShowButton] = useState(false);
   const [showAssuntos, setShowAssuntos] = useState(true);
+  const [disciplina, setDisciplina] = useState("");
 
   const resetarUseState = (setSelectAssunto: React.Dispatch<React.SetStateAction<string | null>>) => {
     setSelectAssunto(null);
     setShowButton(false);
     setShowAssuntos(true);
+    setDisciplina("");
   }
-
 
   return (
     <div className={styles['disciplina-box']}>
       <div className={styles['disciplina-header']}>
         <img src={selectedDisciplina.icone} alt="Icon" className={styles['disciplina-icon']} />
-        <h1>{selectedDisciplina.nome}</h1>
+        <h1>{disciplina == "" ? selectedDisciplina.nome : disciplina}</h1>
+
         {showButton && <button className={styles['move-right']} onClick={() => resetarUseState(setSelectAssunto)}>Voltar</button>}
       </div>
 
@@ -92,7 +103,7 @@ const DisciplinaBox = ({ selectedDisciplina, setSelectAssunto, children }: { sel
         <h1>Todos os assuntos de {selectedDisciplina.nome}</h1>
         {selectedDisciplina.assuntos.map((assunto: string, index: number) => (
           <div key={index} className={styles['assunto-card']}>
-            <button onClick={() => { setSelectAssunto(assunto); setShowButton(true); setShowAssuntos(false); }}>{assunto}</button>
+            <button onClick={() => { setDisciplina(assunto); setSelectAssunto(assunto); setShowButton(true); setShowAssuntos(false); }}>{assunto}</button>
           </div>
         ))}
       </div>}
@@ -100,5 +111,6 @@ const DisciplinaBox = ({ selectedDisciplina, setSelectAssunto, children }: { sel
     </div>
   );
 };
+
 
 export default Disciplina;
