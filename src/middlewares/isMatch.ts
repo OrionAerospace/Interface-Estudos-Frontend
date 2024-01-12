@@ -7,8 +7,10 @@
  */
 
 export function isMatch(pathname: string, matchers: string[]): boolean {
+  const decodedPath = decodeURIComponent(pathname)
+
   for (const matcher of matchers) {
-    const [pathWithoutSearchParams] = pathname.split('?')
+    const [pathWithoutSearchParams] = decodedPath.split('?')
     const [matcherWithoutSearchParams] = matcher.split('?')
 
     const [, ...pathnameParts] = pathWithoutSearchParams.split('/')
@@ -16,12 +18,14 @@ export function isMatch(pathname: string, matchers: string[]): boolean {
 
     if (!pathnameParts || !matcherParts || !areArraysEqual(pathnameParts, matcherParts)) continue
 
-    const pathSearchParams = pathname.split('?').map((part) => part.split('&'))[1]
+    const pathSearchParams = decodedPath.split('?').map((part) => part.split('&'))[1]
     const pathParams = pathSearchParams?.map((part) => part.split('=')[0])
 
     const matcherParams = matcher.split('?')[1]?.split('&')
 
-    if (!pathParams || !matcherParams || !areArraysEqual(pathParams, matcherParams)) continue
+    if (!matcherParams) return true
+
+    if (!pathParams || !areArraysEqual(pathParams, matcherParams)) continue
 
     return true
   }
