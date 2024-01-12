@@ -34,7 +34,7 @@ const Card = ({ nome: cardNome, assunto, exercicios }: any) => {
               <div className="flex flex-col items-start justify-start gap-1 mb-2 bg-slate-200 p-2 rounded-lg shadow w-full">
                 <div className="flex items-center justify-between w-full">
                   <h2 className="font-bold text-1xl">{el.nome}</h2>
-                  <img src="/assets/icons/lock.png" alt="Tarefa Bloqueada" width="24px" />
+                  <img src="/assets/icons/article.png" alt="Tarefa Bloqueada" width="24px" />
                 </div>
                 
                 <p className="text-sm from-neutral-600">Data: {el.data}</p>
