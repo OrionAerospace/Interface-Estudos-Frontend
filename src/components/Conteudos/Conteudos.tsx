@@ -44,8 +44,8 @@ const exercicios = [
 
 const Conteudos = ({ disciplina }: any): any => {
     return (
-        <div className="flex flex-wrap w-full items-baseline justify-around gap-3 mt-10">
-            <Card nome={"Vídeo aulas"} assunto={assuntos} exercicios={exercicios} />
+        <div className="flex flex-wrap w-full items-baseline justify-evenly gap-3 mt-10">
+            <Card nome={"Vídeo aulas"} assunto={assuntos} exercicios={exercicios}/>
             <Card nome={"Em progresso"} assunto={assuntos} exercicios={exercicios} />
             <Card nome={"Exercícios Resolvidos"} assunto={assuntos} exercicios={exercicios}/>
         </div>
