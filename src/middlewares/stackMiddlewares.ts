@@ -7,5 +7,6 @@ export function stackMiddlewares(functions: MiddlewareFactory[] = [], index = 0)
     const next = stackMiddlewares(functions, index + 1)
     return current(next)
   }
+
   return () => NextResponse.next()
 }
