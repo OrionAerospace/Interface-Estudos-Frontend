@@ -14,7 +14,6 @@ export default function Profile() {
           </div>
           <img src="/assets/images/orion.png" alt="Foto de perfil" />
         </div>
-
         <div className={styles['stats']}>
           <div className={styles['item']}>
             <p>Pré-cálculo</p>
@@ -33,19 +32,15 @@ export default function Profile() {
             <h2>68%</h2>
           </div>
         </div>
-         
         <h2>Conquistas:</h2>
-        
-         <div className={styles['badges-icon']}>
+        <div className={styles['badges-icon']}>
           <img src="/assets/badges/atom.png" alt="" />
           <img src="/assets/badges/career.png" alt="" />
           <img src="/assets/badges/medal.png" alt="" />
           <img src="/assets/badges/mountain.png" alt="" />
           <img src="/assets/badges/plex.png" alt="" />
           <img src="/assets/badges/rank.png" alt="" />
-       </div>
-         
-       
+        </div>
       </div>
     </div>
   )

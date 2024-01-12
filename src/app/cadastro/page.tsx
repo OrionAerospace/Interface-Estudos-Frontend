@@ -28,6 +28,8 @@ export default function Register() {
 
     const res = await UserService.register(user)
 
+    console.log(res, isChecked, setErrorMessage)
+
     setValue('email', '')
     setValue('password', '')
     setValue('name', '')

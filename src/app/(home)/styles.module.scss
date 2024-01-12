@@ -2,8 +2,6 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-   
-      
 
   header {
     background-color: var(--primary-dark);
@@ -47,7 +45,6 @@
   }
 }
 
-
 .subjects-container {
   background-color: var(--white);
   border-radius: 10px;
@@ -57,7 +54,6 @@
   margin-top: -50px;
   margin-bottom: 50px;
   padding: 20px;
-  
 
   display: flex;
   flex-wrap: wrap;
@@ -84,7 +80,6 @@
   width: 100%;
 }
 
-
 .card {
   background-color: var(--secondary);
   color: var(--white);
@@ -110,8 +105,6 @@
   text-align: center;
   bottom: 0;
   padding: 12px 0;
-
- 
 
   p {
     color: var(--white);

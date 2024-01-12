@@ -13,6 +13,7 @@ pnpm dev
 # or
 bun dev
 ```
+
 npm install to get dependencies
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.

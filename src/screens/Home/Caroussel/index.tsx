@@ -9,14 +9,7 @@ const subjects = [
   { icon: 'G', title: 'Geometria', color: '#008080' },
   { icon: 'P', title: 'Probabilidade', color: '#A52A2A' },
   { icon: 'Q', title: 'Química', color: '#C0C0C0' },
-
-  // Adicione mais ícones e títulos conforme necessário
 ]
-
-
-
-
-
 
 export function Carousel() {
   const iconStyle = (index: number) => {

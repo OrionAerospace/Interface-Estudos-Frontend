@@ -28,6 +28,8 @@ export default function Login() {
 
     const res = await UserService.login(user)
 
+    console.log(res, isChecked, setErrorMessage)
+
     setValue('password', '')
     setValue('username', '')
   }

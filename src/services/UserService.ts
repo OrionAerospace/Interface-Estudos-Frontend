@@ -1,6 +1,6 @@
 import { http } from '@/config/axios'
-import { UserLogin } from '@/interfaces/User/UserLogin'
-import { UserRegister } from '@/interfaces/User/UserRegister'
+import { UserLogin } from '@/types/User/UserLogin'
+import { UserRegister } from '@/types/User/UserRegister'
 
 export class UserService {
   static async register(user: UserRegister) {
