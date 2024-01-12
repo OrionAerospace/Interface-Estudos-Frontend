@@ -3,7 +3,7 @@ import React from 'react';
 import { useState } from 'react';
 import Conteudos from '@/components/Conteudos/Conteudos';
 import styles from './styles.module.scss'; // Estilos com Sass/SCSS
-import NotificationsIcon from './assets/icons/notification.png';
+
 
 
 const Disciplina = () => {

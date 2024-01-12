@@ -13,6 +13,15 @@
   );
 }
 
+.badges-icon{
+  width: 50px;
+  margin-top: 10px;
+  display: flex;
+
+}
+
+
+
 .profile-container {
   width: 100%;
   max-width: 600px;
@@ -77,4 +86,6 @@
     font-size: 22px;
     color: var(--primary);
   }
+
+
 }
