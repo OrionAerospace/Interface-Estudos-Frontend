@@ -1,5 +1,7 @@
 import { Subject } from '@/types/Discipline/Subject/Subject'
 import { Exercice } from '@/types/Exercices/Exercices'
+import { link } from 'fs'
+import Link from 'next/link'
 
 interface CardProps {
   name: 'Vídeo aulas' | 'Em progresso' | 'Exercícios Resolvidos'
@@ -24,7 +26,10 @@ export function Card({ name, subject, exercices }: CardProps) {
                   {lesson.name}
 
                   {name == 'Vídeo aulas' && (
-                    <img src="/assets/icons/play.png" alt="Play" width="24px" />
+                    <Link href="/aulas">
+                    <img src="/assets/icons/play.png" alt="Play" width="24px"  />  
+                    </Link>
+                  
                   )}
                   {name == 'Em progresso' &&
                     (lesson.conclusion ? (

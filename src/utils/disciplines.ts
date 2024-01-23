@@ -1,4 +1,7 @@
+
+
 import { Discipline } from '@/types/Discipline/Discipline'
+
 
 export const disciplines = [
   {
@@ -10,7 +13,7 @@ export const disciplines = [
           {
             topic: 'Conjuntos Numéricos',
             lessons: [
-              { name: 'Aula 1', conclusion: false },
+              { name: 'Aula 1', conclusion: false},
               { name: 'Aula 2', conclusion: true },
               { name: 'Aula 3', conclusion: false },
               { name: 'Aula 4', conclusion: true },
@@ -475,4 +478,10 @@ export const disciplines = [
     ],
     icon: '/assets/icons/matrizes.png',
   },
+
+  
+
+
+
 ] satisfies Discipline[]
+
