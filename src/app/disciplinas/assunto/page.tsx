@@ -5,6 +5,7 @@ import styles from './styles.module.scss'
 import { useRouter, useSearchParams } from 'next/navigation'
 import { disciplines } from '@/utils/disciplines'
 import { exercices } from '@/utils/exercices'
+import { Button } from '@/components/Button'
 
 export default function SubjectPage() {
   const searchParams = useSearchParams()
@@ -20,25 +21,23 @@ export default function SubjectPage() {
   }
 
   return (
-    <div className={styles['discipline-box']}>
+    <>
       <div className={styles['discipline-header']}>
         <img
           src={selectedDisciplina?.icon}
           alt={`Ícone da disciplina ${selectedDisciplina?.name}`}
           className={styles['discipline-icon']}
         />
-        <h1>
+        <h1 className="text-2xl font-semibold mt-1">
           {selectedDisciplina?.name} | {selectedSubject}
         </h1>
-        <button className={styles['move-right']} onClick={handleClick}>
-          Voltar
-        </button>
+        <Button onClick={handleClick}>Voltar</Button>
       </div>
       <div className="flex w-full flex-wrap align-baseline justify-evenly gap-3 mt-10">
         <Card name="Vídeo aulas" subject={subject} exercices={exercices} />
         <Card name="Em progresso" subject={subject} exercices={exercices} />
         <Card name="Exercícios Resolvidos" subject={subject} exercices={exercices} />
       </div>
-    </div>
+    </>
   )
 }

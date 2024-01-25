@@ -32,6 +32,15 @@ const config: Config = {
         default: '0 2px 10px',
         hover: '0 4px 15px',
       },
+      keyframes: {
+        progress: {
+          '0%': { opacity: '0', width: '0' },
+          '100%': { opacity: '1' },
+        },
+      },
+      animation: {
+        progress: 'progress 0.4s ease-in-out forwards',
+      },
     },
   },
   plugins: [],

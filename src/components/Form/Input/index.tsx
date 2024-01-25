@@ -19,7 +19,7 @@ export function Input(props: IInputProps) {
   const input = watch(props.name)?.toString()
 
   return (
-    <InputBx length={input?.length > 0 ? true : false}>
+    <InputBx length={input && input?.length > 0}>
       <input
         {...register(props.name)}
         {...props}

@@ -1,36 +1,3 @@
-.move-right {
-  margin-left: 20px;
-  padding: 10px 20px;
-  background-color: #007bff;
-  color: white;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-
-  &:hover {
-    background-color: #0056b3;
-  }
-}
-
-.discipline-box {
-  background-color: var(--white);
-  color: var(--primary-dark);
-  padding: 20px;
-  border-radius: 30px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  margin-left: 100px;
-  margin-top: 10px;
-  margin-bottom: 15px;
-  width: 92%;
-
-  h1 {
-    font-size: 25px;
-    font-weight: 600;
-    margin-top: 3px;
-  }
-}
-
 .discipline-header {
   display: flex;
   align-items: center;

@@ -1,6 +1,5 @@
 import { Subject } from '@/types/Discipline/Subject/Subject'
 import { Exercice } from '@/types/Exercices/Exercices'
-import { link } from 'fs'
 import Link from 'next/link'
 
 interface CardProps {
@@ -24,12 +23,10 @@ export function Card({ name, subject, exercices }: CardProps) {
               {el.lessons.map((lesson, index) => (
                 <li key={index} className="flex justify-evenly items-center gap-1 text-sm">
                   {lesson.name}
-
                   {name == 'Vídeo aulas' && (
                     <Link href="/aulas">
-                    <img src="/assets/icons/play.png" alt="Play" width="24px"  />  
+                      <img src="/assets/icons/play.png" alt="Play" width="24px" />
                     </Link>
-                  
                   )}
                   {name == 'Em progresso' &&
                     (lesson.conclusion ? (

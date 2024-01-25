@@ -25,8 +25,10 @@ export default function DisciplinesLayout({ children }: { children: React.ReactN
           </nav>
         </header>
         <div className="flex flex-[1]">
+          <div className="relative bg-white text-primary-dark shadow-default shadow-black/10 p-5 rounded-3xl ml-24 mt-2.5 mb-4 w-[92%]">
+            {children}
+          </div>
           <SideBar />
-          {children}
         </div>
       </div>
     </div>

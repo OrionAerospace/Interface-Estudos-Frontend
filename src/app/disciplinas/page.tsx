@@ -11,14 +11,14 @@ export default function Discipline() {
   const selectedDisciplina = disciplines.find((obj) => obj.name === disciplineName)
 
   return (
-    <div className={styles['discipline-box']}>
+    <>
       <div className={styles['discipline-header']}>
         <img
           src={selectedDisciplina?.icon}
           alt={`Ícone da disciplina ${selectedDisciplina?.name}`}
           className={styles['discipline-icon']}
         />
-        <h1>{selectedDisciplina?.name}</h1>
+        <h1 className="text-2xl font-semibold mt-1">{selectedDisciplina?.name}</h1>
       </div>
       <div className={styles['subjects']}>
         <h1>Todos os assuntos de {selectedDisciplina?.name}</h1>
@@ -39,6 +39,6 @@ export default function Discipline() {
           </div>
         ))}
       </div>
-    </div>
+    </>
   )
 }
