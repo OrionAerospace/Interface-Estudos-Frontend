@@ -5,5 +5,5 @@ import { passwordSchema } from './utils/passwordSchema'
 export const loginFormDataSchema = z.object({
   username: usernameSchema,
   password: passwordSchema,
-  isChecked: z.boolean().optional(),
+  isChecked: z.boolean(),
 })

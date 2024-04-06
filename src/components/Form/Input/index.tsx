@@ -9,7 +9,7 @@ interface IInputProps extends InputHTMLAttributes<HTMLInputElement> {
   field: string
 }
 
-export function Input(props: IInputProps) {
+export function Input({ type = 'text', ...props }: IInputProps) {
   const {
     register,
     formState: { errors },
@@ -19,10 +19,11 @@ export function Input(props: IInputProps) {
   const input = watch(props.name)?.toString()
 
   return (
-    <InputBx length={input && input?.length > 0}>
+    <InputBx isEmpty={input && input?.length > 0}>
       <input
         {...register(props.name)}
         {...props}
+        type={type}
         className="outline-none h-14 2xl:h-16 relative tracking-wide w-full bg-bgTertiary border-none px-4 pt-6 pb-2 rounded font-medium text-base lg:text-lg 2xl:text-xl"
         data-testid="input"
       />
@@ -50,7 +51,7 @@ const style = css`
   }
 `
 
-const InputBx = styled.div<{ length: boolean }>`
+const InputBx = styled.div<{ isEmpty: boolean }>`
   position: relative;
   width: 100%;
 
@@ -68,7 +69,7 @@ const InputBx = styled.div<{ length: boolean }>`
   }
 
   input:valid ~ .field {
-    ${({ length }) => (length ? style : '')}
+    ${({ isEmpty }) => (isEmpty ? style : '')}
   }
 
   input[type='text']:focus,

@@ -1,8 +1,8 @@
 'use client'
 
 import styles from './styles.module.scss'
-import { UserService } from '@/services/UserService'
-import { z } from 'zod'
+import { useUser } from '@/services/UserService'
+import { set, z } from 'zod'
 import { registerFormDataSchema } from '@/zod/schemas/registerFormDataSchema'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
@@ -13,6 +13,8 @@ import Link from 'next/link'
 type registerFormData = z.infer<typeof registerFormDataSchema>
 
 export default function Register() {
+  const { register } = useUser()
+
   const registerUserForm = useForm<registerFormData>({
     resolver: zodResolver(registerFormDataSchema),
   })
@@ -24,16 +26,22 @@ export default function Register() {
   })
 
   async function submit(data: registerFormData) {
-    const { isChecked, ...user } = data
+    const res = await register(data)
 
-    const res = await UserService.register(user)
-
-    console.log(res, isChecked, setErrorMessage)
+    if (res.error) {
+      setErrorMessage({ error: true, message: res.message })
+      return
+    }
 
     setValue('email', '')
     setValue('password', '')
     setValue('name', '')
     setValue('username', '')
+    setValue('course', '')
+    setValue('city', '')
+    setValue('university', '')
+    setValue('confirmPassword', '')
+    setValue('isChecked', false)
   }
 
   return (
@@ -49,10 +57,22 @@ export default function Register() {
           <Form.Title className="mb-4 2xl:mb-12 tracking-widest" Tag="h1">
             Crie sua conta
           </Form.Title>
-          <Form.Input type="text" name="name" field="Nome" />
-          <Form.Input type="text" name="username" field="Usuário" />
-          <Form.Input type="text" name="email" field="E-mail" />
-          <Form.Input type="password" name="password" field="Senha" />
+          <div className="flex gap-4">
+            <Form.Input name="name" field="Nome Completo" />
+            <Form.Input name="username" field="Usuário" />
+          </div>
+          <div className="flex gap-4">
+            <Form.Input name="email" field="E-mail" />
+            <Form.Input name="city" field="Cidade" />
+          </div>
+          <div className="flex gap-4">
+            <Form.Input name="course" field="Curso" />
+            <Form.Input name="university" field="Universidade" />
+          </div>
+          <div className="flex gap-4">
+            <Form.Input type="password" name="password" field="Senha" />
+            <Form.Input type="password" name="confirmPassword" field="Confirme a sua senha" />
+          </div>
           {errorMessage.error && <span className="text-primary-dark">Usuário já cadastrado</span>}
           <Form.CheckBox field="isChecked">Lembrar senha</Form.CheckBox>
           <Form.SubmitButton>Criar conta</Form.SubmitButton>

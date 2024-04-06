@@ -1,7 +1,7 @@
 'use client'
 
 import styles from './styles.module.scss'
-import { UserService } from '@/services/UserService'
+import { useUser } from '@/services/UserService'
 import { z } from 'zod'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
@@ -13,6 +13,8 @@ import { loginFormDataSchema } from '@/zod/schemas/loginFormDataSchema'
 type loginFormData = z.infer<typeof loginFormDataSchema>
 
 export default function Login() {
+  const { login } = useUser()
+
   const registerUserForm = useForm<loginFormData>({
     resolver: zodResolver(loginFormDataSchema),
   })
@@ -24,11 +26,12 @@ export default function Login() {
   })
 
   async function submit(data: loginFormData) {
-    const { isChecked, ...user } = data
+    const res = await login(data)
 
-    const res = await UserService.login(user)
-
-    console.log(res, isChecked, setErrorMessage)
+    if (res.error) {
+      setErrorMessage({ error: true, message: res.message })
+      return
+    }
 
     setValue('password', '')
     setValue('username', '')

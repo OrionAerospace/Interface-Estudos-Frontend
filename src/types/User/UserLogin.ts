@@ -1,5 +1,6 @@
 import { User } from './User'
 
-export type UserLogin = Omit<User, 'name' | 'email'> & {
+export type UserLogin = Pick<User, 'username'> & {
   password: string
+  isChecked: boolean
 }

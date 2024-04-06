@@ -24,7 +24,7 @@ export function Card({ name, subject, exercices }: CardProps) {
                 <li key={index} className="flex justify-evenly items-center gap-1 text-sm">
                   {lesson.name}
                   {name == 'Vídeo aulas' && (
-                    <Link href="/aulas">
+                    <Link href="/disciplinas/aulas">
                       <img src="/assets/icons/play.png" alt="Play" width="24px" />
                     </Link>
                   )}
