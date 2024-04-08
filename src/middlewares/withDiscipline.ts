@@ -1,12 +1,15 @@
+import { useDiscipline } from '@/services/DisciplineService'
 import { MiddlewareFactory } from '@/types/Middleware/types'
-import { disciplines } from '@/utils/disciplines'
+import { isMatch } from '@/utils/functions/isMatch'
 import { NextFetchEvent, NextMiddleware, NextRequest, NextResponse } from 'next/server'
-import { isMatch } from './isMatch'
 
 const matchers = ['/disciplinas']
 
 export const withDiscipline: MiddlewareFactory = (next: NextMiddleware) => {
   return async (request: NextRequest, _next: NextFetchEvent) => {
+    const { getAllDIsicplines } = useDiscipline()
+    const disciplines = await getAllDIsicplines()
+
     if (isMatch(request.nextUrl.pathname + request.nextUrl.search, matchers)) {
       const searchParams = request.nextUrl.searchParams
 

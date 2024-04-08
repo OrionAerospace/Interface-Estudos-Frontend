@@ -1,8 +1,9 @@
+import { authentication } from './middlewares/authentication'
 import { stackMiddlewares } from './middlewares/stackMiddlewares'
 import { withDiscipline } from './middlewares/withDiscipline'
-import { withSubject } from './middlewares/withSubject'
+import { withContent } from './middlewares/withContent'
 
-const middlewares = [withDiscipline, withSubject]
+const middlewares = [withDiscipline, withContent, authentication]
 
 export default stackMiddlewares(middlewares)
 

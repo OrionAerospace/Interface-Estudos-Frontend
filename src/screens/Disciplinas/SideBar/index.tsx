@@ -1,8 +1,11 @@
 import Link from 'next/link'
 import styles from './styles.module.scss'
-import { disciplines } from '@/utils/disciplines'
+import { useDiscipline } from '@/services/DisciplineService'
 
-export function SideBar() {
+export async function SideBar() {
+  const { getAllDIsicplines } = useDiscipline()
+  const disciplines = await getAllDIsicplines()
+
   return (
     <div className={styles['sidebar']}>
       {disciplines.map((discipline, index) => (
@@ -11,7 +14,7 @@ export function SideBar() {
           key={index}
           className={styles['discipline']}
         >
-          <img src={discipline.icon} alt="Icon" />
+          <img src={`/assets/icons/${discipline.code}.png`} alt="Icon" />
           <span className={styles['disciplina-text']}>{discipline.name}</span>
         </Link>
       ))}

@@ -1,7 +1,5 @@
-import { Subject } from './Subject/Subject'
-
 export type Discipline = {
+  idDiscipline: number
   name: string
-  subjects: Subject[]
-  icon: string
+  code: string
 }
