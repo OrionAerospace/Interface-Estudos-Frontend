@@ -2,7 +2,7 @@
 
 import styles from './styles.module.scss'
 import { useUser } from '@/services/UserService'
-import { set, z } from 'zod'
+import { z } from 'zod'
 import { registerFormDataSchema } from '@/zod/schemas/registerFormDataSchema'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
@@ -26,7 +26,7 @@ export default function Register() {
   })
 
   async function submit(data: registerFormData) {
-    const res = await register(data)
+    const res = await register(data, data.isChecked)
 
     if (res.error) {
       setErrorMessage({ error: true, message: res.message })

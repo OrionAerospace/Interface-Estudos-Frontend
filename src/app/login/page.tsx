@@ -9,10 +9,12 @@ import { Form } from '@/components/Form'
 import { useState } from 'react'
 import Link from 'next/link'
 import { loginFormDataSchema } from '@/zod/schemas/loginFormDataSchema'
+import { useRouter } from 'next/navigation'
 
 type loginFormData = z.infer<typeof loginFormDataSchema>
 
 export default function Login() {
+  const router = useRouter()
   const { login } = useUser()
 
   const registerUserForm = useForm<loginFormData>({
@@ -26,12 +28,13 @@ export default function Login() {
   })
 
   async function submit(data: loginFormData) {
-    const res = await login(data)
-
+    const res = await login(data, data.isChecked)
     if (res.error) {
       setErrorMessage({ error: true, message: res.message })
       return
     }
+
+    router.push('/disciplinas?disciplina=Cálculo%20I')
 
     setValue('password', '')
     setValue('username', '')
@@ -52,7 +55,7 @@ export default function Login() {
           </Form.Title>
           <Form.Input type="text" name="username" field="Usuário" />
           <Form.Input type="password" name="password" field="Senha" />
-          {errorMessage.error && <span className="text-primary-dark">Usuário já cadastrado</span>}
+          {errorMessage.error && <span className="text-primary-dark">{errorMessage.message}</span>}
           <Form.CheckBox field="isChecked">Lembrar senha</Form.CheckBox>
           <Form.SubmitButton>Entrar</Form.SubmitButton>
         </Form.Root>

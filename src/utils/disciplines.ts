@@ -1,8 +1,6 @@
-import { Discipline } from '@/types/Discipline/Discipline'
-
 export const disciplines = [
   {
-    name: 'Cálculo',
+    name: 'Cálculo I',
     subjects: [
       {
         name: 'Pré-Cálculo',
@@ -475,4 +473,4 @@ export const disciplines = [
     ],
     icon: '/assets/icons/matrizes.png',
   },
-] satisfies Discipline[]
+]

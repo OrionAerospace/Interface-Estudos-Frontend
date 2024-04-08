@@ -1,25 +1,31 @@
 import styles from './styles.module.scss'
 import Link from 'next/link'
-import { Carousel } from '@/screens/Home/Caroussel'
+import { useDiscipline } from '@/services/DisciplineService'
 
-export default function Home() {
+export default async function Home() {
+  const { getAllDIsicplines } = useDiscipline()
+  const disciplines = await getAllDIsicplines()
+
   return (
     <div className={styles['page-container']}>
       <header className={styles['header']}>
-        <h1>Interface de Estudos de Cálculo</h1>
+        <h1>Interface de Estudos</h1>
         <h2>Aprenda cálculo, física e muito mais!</h2>
         <Link href="/cadastro">Cadastrar</Link>
       </header>
       <div className={styles['subjects-container']}>
-        <Carousel />
         <div className={styles['cards-container']}>
-          <div className={styles['card']}>Cálculo</div>
-          <div className={styles['card']}>Física</div>
-          <div className={styles['card']}>Química</div>
-          <div className={styles['card']}>Álgebra Linear</div>
-          <div className={styles['card']}>Geometria Analítica</div>
+          {disciplines.map((discipline) => (
+            <Link
+              href={`/disciplinas?disciplina=${discipline.name}`}
+              key={discipline.id}
+              className={styles['card']}
+            >
+              <img src={`/assets/icons/${discipline.code}.png`} className="w-16" alt="" />
+              {discipline.name}
+            </Link>
+          ))}
         </div>
-        <Link href="/login">Ver mais assuntos de Cálculo</Link>
       </div>
       <footer className={styles['footer']}>
         <p>Feito em 2023 | UTFPR PG</p>

@@ -9,7 +9,7 @@ type LoginResponse = {
   username: string
   authenticated: true
   created: Date
-  expiration: Date
+  expiration: number
   accessToken: string
   refreshToken: string
 }
@@ -17,9 +17,9 @@ type LoginResponse = {
 export function useUser() {
   const { setCookie } = useCookies()
 
-  async function register(user: UserRegister) {
+  async function register(user: UserRegister, isChecked: boolean) {
     try {
-      const res = await http({
+      const res = await http('/auth/signup/USER', {
         method: 'POST',
         data: user,
       })
@@ -28,7 +28,7 @@ export function useUser() {
         throw new Error('Erro ao cadastrar o usuário')
       }
 
-      login(user)
+      login(user, isChecked)
 
       return { error: false, message: 'Usuário cadastrado com sucesso' }
     } catch (err) {
@@ -36,16 +36,18 @@ export function useUser() {
     }
   }
 
-  async function login(user: UserLogin) {
+  async function login(user: UserLogin, isChecked: boolean) {
     try {
-      const res = await http<LoginResponse>('/login', {
+      const res = await http<LoginResponse>('/auth/signin', {
         method: 'POST',
         data: user,
       })
 
-      if (res.status !== 200) throw new Error('Erro ao cadastrar o usuário')
+      if (res.status !== 200) throw new Error('Erro ao realizar o login')
 
-      setCookies(res.data)
+      if (isChecked) {
+        setCookies(res.data)
+      }
 
       return { error: false, message: 'Usuário logado com sucesso' }
     } catch (err) {
@@ -55,16 +57,20 @@ export function useUser() {
 
   function setCookies(data: LoginResponse) {
     setCookie('token', data.accessToken, {
-      expires: data.expiration,
+      maxAge: data.expiration,
     })
     setCookie('refreshToken', data.refreshToken, {
-      expires: data.expiration,
+      maxAge: data.expiration,
     })
-    setCookie('user', {
-      userId: data.userId.toString(),
-      username: data.username,
-      fullName: data.fullName,
-    })
+    setCookie(
+      'user',
+      {
+        userId: data.userId.toString(),
+        username: data.username,
+        fullName: data.fullName,
+      },
+      { maxAge: data.expiration }
+    )
   }
 
   return {
