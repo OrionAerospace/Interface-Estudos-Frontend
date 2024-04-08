@@ -18,7 +18,7 @@ export default async function Home() {
           {disciplines.map((discipline) => (
             <Link
               href={`/disciplinas?disciplina=${discipline.name}`}
-              key={discipline.id}
+              key={discipline.idDiscipline}
               className={styles['card']}
             >
               <img src={`/assets/icons/${discipline.code}.png`} className="w-16" alt="" />

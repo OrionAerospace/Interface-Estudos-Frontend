@@ -41,10 +41,11 @@ export function DisciplineScreen({ disciplines }: { disciplines: Discipline[] })
             <button
               onClick={() => {
                 router.push(
-                  `/disciplinas/assunto?disciplina=${selectedDisciplina?.name.replace(
-                    ' ',
-                    '%20'
-                  )}&assunto=${content.name.replace(' ', '%20')}`
+                  `/disciplinas/assunto?disciplina=${encodeURI(
+                    selectedDisciplina.name
+                  )}&assunto=${encodeURI(content.name)}&disciplineId=${encodeURI(
+                    selectedDisciplina.idDiscipline.toString()
+                  )}&contentId=${encodeURI(content.idContent.toString())}`
                 )
               }}
             >

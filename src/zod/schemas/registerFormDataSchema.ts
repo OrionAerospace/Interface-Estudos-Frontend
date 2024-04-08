@@ -1,4 +1,4 @@
-import { union, z } from 'zod'
+import { z } from 'zod'
 import { usernameSchema } from './utils/usernameSchema'
 import { passwordSchema } from './utils/passwordSchema'
 import { nameSchema } from './utils/nameSchema'
