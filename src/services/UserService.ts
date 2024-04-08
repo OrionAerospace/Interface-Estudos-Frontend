@@ -36,6 +36,7 @@ export function useUser() {
     }
   }
 
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   async function login(user: UserLogin, isChecked: boolean) {
     try {
       const res = await http<LoginResponse>('/auth/signin', {
@@ -45,9 +46,7 @@ export function useUser() {
 
       if (res.status !== 200) throw new Error('Erro ao realizar o login')
 
-      if (isChecked) {
-        setCookies(res.data)
-      }
+      setCookies(res.data)
 
       return { error: false, message: 'Usuário logado com sucesso' }
     } catch (err) {

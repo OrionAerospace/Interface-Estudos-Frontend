@@ -3,14 +3,14 @@ export type Subject = {
   name: string
   definition: string
   exercisesUser: {
-    id: number
+    idExercise: number
     statement: string
     difficultyLevel: string
     dateSolved: string
     isAnswerRight: boolean
   }[]
   lessons: {
-    id: number
+    idLesson: number
     title: string
     link: string
   }[]

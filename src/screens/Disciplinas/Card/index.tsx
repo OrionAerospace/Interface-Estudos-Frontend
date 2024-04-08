@@ -2,6 +2,7 @@
 
 import { useCookies } from '@/services/CookiesService'
 import { useSubjects } from '@/services/SubjectsService'
+import { useSearchParams } from 'next/navigation'
 import { Subject } from '@/types/Subject/Subject'
 import Link from 'next/link'
 import { useEffect, useState } from 'react'
@@ -15,6 +16,7 @@ interface CardProps {
 }
 
 export function Card({ name, content }: CardProps) {
+  const searchParams = useSearchParams()
   const [subjects, setSubjects] = useState([] as Subject[])
   const { getAllSubjects } = useSubjects()
   const { getCookie } = useCookies()
@@ -26,6 +28,10 @@ export function Card({ name, content }: CardProps) {
       setSubjects(await getAllSubjects(user?.value.userId, content.id))
     })()
   }, [])
+
+  let params = ''
+  for (const [key, value] of searchParams.entries()) params += `${key}=${value}&`
+  params = params.slice(0, -1)
 
   return (
     <div className="flex flex-col items-center justify-between shadow-lg p-3 rounded-lg bg-slate-50 w-[250px] h-[550px]">
@@ -42,16 +48,22 @@ export function Card({ name, content }: CardProps) {
                 <li key={index} className="flex justify-evenly items-center gap-1 text-sm">
                   {lesson.title}
                   {name == 'Vídeo aulas' && (
-                    <Link href="/disciplinas/aulas">
+                    <Link
+                      href={`/disciplinas/assunto/aula?${params}&aulaTitulo=${encodeURI(
+                        lesson.title
+                      )}&aulaId=${encodeURI(lesson.idLesson.toString())}&aulaUrl=${encodeURI(
+                        lesson.link
+                      )}`}
+                    >
                       <img src="/assets/icons/play.png" alt="Play" width="24px" />
                     </Link>
                   )}
-                  {/* {name == 'Em progresso' &&
-                    (lesson.id ? (
+                  {name == 'Em progresso' &&
+                    (lesson.idLesson ? (
                       <img src="/assets/icons/check.png" alt="Concluído" width="24px" />
                     ) : (
                       <img src="/assets/icons/close.png" alt="Não concluído" width="24px" />
-                    ))} */}
+                    ))}
                 </li>
               ))}
             </ul>
