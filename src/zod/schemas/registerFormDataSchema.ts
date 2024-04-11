@@ -9,7 +9,7 @@ import { universitySchema } from './utils/universitySchema'
 
 export const registerFormDataSchema = z
   .object({
-    name: nameSchema,
+    fullName: nameSchema,
     username: usernameSchema,
     password: passwordSchema,
     confirmPassword: passwordSchema,

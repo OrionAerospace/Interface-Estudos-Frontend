@@ -35,7 +35,7 @@ export default function Register() {
 
     setValue('email', '')
     setValue('password', '')
-    setValue('name', '')
+    setValue('fullName', '')
     setValue('username', '')
     setValue('course', '')
     setValue('city', '')
@@ -58,7 +58,7 @@ export default function Register() {
             Crie sua conta
           </Form.Title>
           <div className="flex gap-4">
-            <Form.Input name="name" field="Nome Completo" />
+            <Form.Input name="fullName" field="Nome Completo" />
             <Form.Input name="username" field="Usuário" />
           </div>
           <div className="flex gap-4">
