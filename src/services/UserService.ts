@@ -17,9 +17,9 @@ type LoginResponse = {
 export function useUser() {
   const { setCookie } = useCookies()
 
-  async function register(user: UserRegister, isChecked: boolean) {
+  async function register(user: UserRegister, isChecked: boolean, permission: string = 'user') {
     try {
-      const res = await http('/auth/signup/USER', {
+      const res = await http(`/auth/signup/${permission}`, {
         method: 'POST',
         data: user,
       })
