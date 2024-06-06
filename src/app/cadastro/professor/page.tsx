@@ -65,7 +65,10 @@ export default function Register() {
             <Form.Input name="email" field="E-mail" />
             <Form.Input name="city" field="Cidade" />
           </div>
-          <div className="flex gap-4"></div>
+          <div className="flex gap-4">
+            <Form.Input name="course" field="Curso" />
+            <Form.Input name="university" field="Universidade" />
+          </div>
           <div className="flex gap-4">
             <Form.Input type="password" name="password" field="Senha" />
             <Form.Input type="password" name="confirmPassword" field="Confirme a sua senha" />
