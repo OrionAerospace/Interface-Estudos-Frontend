@@ -3,9 +3,7 @@ import { usernameSchema } from './utils/usernameSchema'
 import { passwordSchema } from './utils/passwordSchema'
 import { nameSchema } from './utils/nameSchema'
 import { emailSchema } from './utils/emailSchema'
-import { departmentSchema } from './utils/departmentSchema'
 import { citySchema } from './utils/citySchema'
-import { universitySchema } from './utils/universitySchema'
 
 export const registerTeacherFormDataSchema = z
   .object({
@@ -14,9 +12,7 @@ export const registerTeacherFormDataSchema = z
     password: passwordSchema,
     confirmPassword: passwordSchema,
     email: emailSchema,
-    department: departmentSchema,
     city: citySchema,
-    university: universitySchema,
     isChecked: z.boolean(),
   })
   .refine((data) => data.password === data.confirmPassword, {

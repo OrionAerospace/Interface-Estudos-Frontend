@@ -3,20 +3,20 @@
 import styles from './styles.module.scss'
 import { useUser } from '@/services/UserService'
 import { z } from 'zod'
-import { registerFormDataSchema } from '@/zod/schemas/registerFormDataSchema'
+import { registerTeacherFormDataSchema } from '@/zod/schemas/registerTeacherFormDataSchema'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { Form } from '@/components/Form'
 import { useState } from 'react'
 import Link from 'next/link'
 
-type registerFormData = z.infer<typeof registerFormDataSchema>
+type registerTeacherFormDataSchema = z.infer<typeof registerTeacherFormDataSchema>
 
 export default function Register() {
   const { register } = useUser()
 
-  const registerUserForm = useForm<registerFormData>({
-    resolver: zodResolver(registerFormDataSchema),
+  const registerUserForm = useForm<registerTeacherFormDataSchema>({
+    resolver: zodResolver(registerTeacherFormDataSchema),
   })
   const { handleSubmit, setValue } = registerUserForm
 
@@ -25,21 +25,18 @@ export default function Register() {
     message: '',
   })
 
-  async function submit(data: registerFormData) {
+  async function submit(data: registerTeacherFormDataSchema) {
     const res = await register(data, data.isChecked, 'teacher')
 
     if (res.error) {
       setErrorMessage({ error: true, message: res.message })
       return
     }
-
     setValue('email', '')
     setValue('password', '')
     setValue('fullName', '')
     setValue('username', '')
-    setValue('course', '')
     setValue('city', '')
-    setValue('university', '')
     setValue('confirmPassword', '')
     setValue('isChecked', false)
   }

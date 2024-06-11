@@ -2,6 +2,7 @@ import { http } from '@/config/axios'
 import { UserLogin } from '@/types/User/UserLogin'
 import { UserRegister } from '@/types/User/UserRegister'
 import { useCookies } from './CookiesService'
+import { TeacherRegister } from '@/types/Teacher/TeacherRegister'
 
 type LoginResponse = {
   userId: number
@@ -17,7 +18,11 @@ type LoginResponse = {
 export function useUser() {
   const { setCookie } = useCookies()
 
-  async function register(user: UserRegister, isChecked: boolean, permission: string = 'user') {
+  async function register<T extends UserRegister | TeacherRegister>(
+    user: T,
+    isChecked: boolean,
+    permission: string = 'user'
+  ) {
     try {
       const res = await http(`/auth/signup/${permission}`, {
         method: 'POST',
