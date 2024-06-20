@@ -1,0 +1,76 @@
+'use client'
+
+import styles from './styles.module.scss'
+import { useUser } from '@/services/UserService'
+import { z } from 'zod'
+import { registerTeacherFormDataSchema } from '@/zod/schemas/registerTeacherFormDataSchema'
+import { useForm } from 'react-hook-form'
+import { zodResolver } from '@hookform/resolvers/zod'
+import { Form } from '@/components/Form'
+import { useState } from 'react'
+import Link from 'next/link'
+
+type registerTeacherFormDataSchema = z.infer<typeof registerTeacherFormDataSchema>
+
+export default function Register() {
+  const { register } = useUser()
+
+  const registerUserForm = useForm<registerTeacherFormDataSchema>({
+    resolver: zodResolver(registerTeacherFormDataSchema),
+  })
+  const { handleSubmit, setValue } = registerUserForm
+
+  const [errorMessage, setErrorMessage] = useState({
+    error: false,
+    message: '',
+  })
+
+  async function submit(data: registerTeacherFormDataSchema) {
+    const res = await register(data, data.isChecked, 'teacher')
+
+    if (res.error) {
+      setErrorMessage({ error: true, message: res.message })
+      return
+    }
+    setValue('email', '')
+    setValue('password', '')
+    setValue('fullName', '')
+    setValue('username', '')
+    setValue('city', '')
+    setValue('confirmPassword', '')
+    setValue('isChecked', false)
+  }
+
+  return (
+    <div className={styles['container']}>
+      <aside className={styles['left-section']}>
+        <img src="/assets/images/orion.png" alt="Logo da OrionAerospace" className="w-64" />
+        <h2>Já tem uma conta?</h2>
+        <p>Entre em sua conta para checar seus resultados!</p>
+        <Link href="/login">Entrar</Link>
+      </aside>
+      <main className={styles['right-section']}>
+        <Form.Root form={registerUserForm} onSubmit={handleSubmit(submit)}>
+          <Form.Title className="mb-4 2xl:mb-12 tracking-widest" Tag="h1">
+            Crie sua conta
+          </Form.Title>
+          <div className="flex gap-4">
+            <Form.Input name="fullName" field="Nome Completo" />
+            <Form.Input name="username" field="Usuário" />
+          </div>
+          <div className="flex gap-4">
+            <Form.Input name="email" field="E-mail" />
+            <Form.Input name="city" field="Cidade" />
+          </div>
+          <div className="flex gap-4">
+            <Form.Input type="password" name="password" field="Senha" />
+            <Form.Input type="password" name="confirmPassword" field="Confirme a sua senha" />
+          </div>
+          {errorMessage.error && <span className="text-primary-dark">Usuário já cadastrado</span>}
+          <Form.CheckBox field="isChecked">Lembrar senha</Form.CheckBox>
+          <Form.SubmitButton>Criar conta</Form.SubmitButton>
+        </Form.Root>
+      </main>
+    </div>
+  )
+}
