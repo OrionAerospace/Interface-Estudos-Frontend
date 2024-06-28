@@ -1,16 +1,22 @@
-// LogoutButton.tsx
-import { logout } from '@/services/auth1'
+import React from 'react'
+import { useCookies } from '@/services/CookiesService'
 
-const LogoutButton: React.FC = () => {
-  const handleLogout = async () => {
-    try {
-      await logout()
-      window.location.href = '/login' // Redirecionar para a página de login
-    } catch (error) {
-      console.error('Erro ao fazer logout:', error)
+type RemoveCookieButtonProps = {
+  token: string
+  onRemove?: () => void
+}
+
+const RemoveCookieButton: React.FC<RemoveCookieButtonProps> = ({ token, onRemove }) => {
+  const { removeCookie } = useCookies()
+
+  const handleRemoveCookie = () => {
+    removeCookie(token)
+    if (onRemove) {
+      onRemove()
     }
   }
 
-  return <button onClick={handleLogout}>Sair</button>
+  return <button onClick={handleRemoveCookie}>Remover Cookie</button>
 }
-export default LogoutButton
+
+export default RemoveCookieButton

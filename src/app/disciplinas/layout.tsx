@@ -1,12 +1,18 @@
+'use client'
 import { SideBar } from '@/screens/Disciplinas/SideBar'
 import Link from 'next/link'
-import dynamic from 'next/dynamic'
-
-const LogoutButton = dynamic(() => import('@/components/Button/LogoutButton'), {
-  ssr: false, // Renderizar apenas no lado do cliente
-})
+import { useCookies } from '@/services/CookiesService'
 
 export default function DisciplinesLayout({ children }: { children: React.ReactNode }) {
+  const { removeCookie } = useCookies()
+
+  const handleRemoveCookie = () => {
+    removeCookie('token')
+    removeCookie('user')
+    removeCookie('refreshToken')
+    window.location.href = '/login'
+  }
+
   return (
     <div className="bg-light">
       <div className="flex flex-col h-screen">
@@ -28,7 +34,7 @@ export default function DisciplinesLayout({ children }: { children: React.ReactN
               {/* <li>Perfil</li> */}
               <Link href="/perfil">Perfil</Link>
               <li>Opções</li>
-              {typeof window !== 'undefined' && <LogoutButton />}
+              <button onClick={handleRemoveCookie}>Sair</button>
             </ul>
           </nav>
         </header>
