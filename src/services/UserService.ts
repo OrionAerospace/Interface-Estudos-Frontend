@@ -36,7 +36,6 @@ export function useUser() {
     }
   }
 
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   async function login(user: UserLogin, isChecked: boolean) {
     try {
       const res = await http<LoginResponse>('/auth/signin', {

@@ -1,4 +1,10 @@
 import { SideBar } from '@/screens/Disciplinas/SideBar'
+import Link from 'next/link'
+import dynamic from 'next/dynamic'
+
+const LogoutButton = dynamic(() => import('@/components/Button/LogoutButton'), {
+  ssr: false, // Renderizar apenas no lado do cliente
+})
 
 export default function DisciplinesLayout({ children }: { children: React.ReactNode }) {
   return (
@@ -19,8 +25,10 @@ export default function DisciplinesLayout({ children }: { children: React.ReactN
                 <img src="/assets/icons/notification.png" alt="Notificações" className="w-8" />
                 <span>Notificações</span>
               </li>
-              <li>Perfil</li>
+              {/* <li>Perfil</li> */}
+              <Link href="/perfil">Perfil</Link>
               <li>Opções</li>
+              {typeof window !== 'undefined' && <LogoutButton />}
             </ul>
           </nav>
         </header>
