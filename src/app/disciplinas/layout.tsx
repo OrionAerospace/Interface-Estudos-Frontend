@@ -1,6 +1,6 @@
 import { SideBar } from '@/screens/Disciplinas/SideBar'
 import Link from 'next/link'
-import { handleRemoveCookie } from '@/app/disciplinas/removeCookies'
+import { handleRemoveCookie } from '@/services/RemoveCookies'
 
 export default function DisciplinesLayout({ children }: { children: React.ReactNode }) {
   return (
