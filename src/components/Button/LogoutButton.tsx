@@ -16,7 +16,7 @@ const RemoveCookieButton: React.FC<RemoveCookieButtonProps> = ({ token, onRemove
     }
   }
 
-  return <button onClick={handleRemoveCookie}>Remover Cookie</button>
+  return <button onClick={handleRemoveCookie}>Sair</button>
 }
 
 export default RemoveCookieButton

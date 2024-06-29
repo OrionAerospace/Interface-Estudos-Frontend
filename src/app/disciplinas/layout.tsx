@@ -1,18 +1,8 @@
-'use client'
 import { SideBar } from '@/screens/Disciplinas/SideBar'
 import Link from 'next/link'
-import { useCookies } from '@/services/CookiesService'
+import { handleRemoveCookie } from '@/app/disciplinas/removeCookies'
 
 export default function DisciplinesLayout({ children }: { children: React.ReactNode }) {
-  const { removeCookie } = useCookies()
-
-  const handleRemoveCookie = () => {
-    removeCookie('token')
-    removeCookie('user')
-    removeCookie('refreshToken')
-    window.location.href = '/login'
-  }
-
   return (
     <div className="bg-light">
       <div className="flex flex-col h-screen">
