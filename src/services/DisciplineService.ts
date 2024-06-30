@@ -15,6 +15,12 @@ export function useDiscipline() {
     return (await res.json()) as Discipline[]
   }
 
+  async function getDisciplineByName(name: string) {
+    const allDisciplines = await getAllDIsicplines()
+    const foundDiscipline = allDisciplines.find((discipline) => discipline.name === name)
+    return foundDiscipline?.idDiscipline
+  }
+
   async function getAllDIsicplinesWithContents() {
     const res = await fetch(`${api}/discipline?withContents=true`, {
       next: {
@@ -24,9 +30,13 @@ export function useDiscipline() {
 
     return (await res.json()) as Discipline[]
   }
-
+  async function addUser(idUser: number, idDiscipline: number) {
+    idUser + 'cadastrado' + idDiscipline
+  }
   return {
+    addUser,
     getAllDIsicplines,
     getAllDIsicplinesWithContents,
+    getDisciplineByName,
   }
 }

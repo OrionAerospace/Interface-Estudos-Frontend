@@ -1,5 +1,6 @@
 export const disciplines = [
   {
+    id: 1,
     name: 'Cálculo I',
     subjects: [
       {
@@ -158,6 +159,7 @@ export const disciplines = [
     icon: '/assets/icons/calculo.png',
   },
   {
+    id: 2,
     name: 'Física',
     subjects: [
       {
@@ -316,6 +318,7 @@ export const disciplines = [
     icon: '/assets/icons/fisica.png',
   },
   {
+    id: 3,
     name: 'Álgebra Linear',
     subjects: [
       {
