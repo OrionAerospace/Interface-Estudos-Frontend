@@ -1,9 +1,8 @@
 import { SideBar } from '@/screens/Disciplinas/SideBar'
 import Link from 'next/link'
-import { useUser } from '@/services/UserService'
+import RemoveCookieButton from '@/screens/Button/LogoutButton'
 
 export default function DisciplinesLayout({ children }: { children: React.ReactNode }) {
-  const { logout } = useUser()
   return (
     <div className="bg-light">
       <div className="flex flex-col h-screen">
@@ -25,7 +24,7 @@ export default function DisciplinesLayout({ children }: { children: React.ReactN
               {/* <li>Perfil</li> */}
               <Link href="/perfil">Perfil</Link>
               <li>Opções</li>
-              <button onClick={logout}>Sair</button>
+              <RemoveCookieButton></RemoveCookieButton>
             </ul>
           </nav>
         </header>
