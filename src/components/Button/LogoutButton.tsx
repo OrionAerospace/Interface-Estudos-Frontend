@@ -1,4 +1,3 @@
-import React from 'react'
 import { useCookies } from '@/services/CookiesService'
 
 type RemoveCookieButtonProps = {
@@ -9,14 +8,14 @@ type RemoveCookieButtonProps = {
 const RemoveCookieButton: React.FC<RemoveCookieButtonProps> = ({ token, onRemove }) => {
   const { removeCookie } = useCookies()
 
-  const handleRemoveCookie = () => {
+  const logout = () => {
     removeCookie(token)
     if (onRemove) {
       onRemove()
     }
   }
 
-  return <button onClick={handleRemoveCookie}>Sair</button>
+  return <button onClick={logout}>Sair</button>
 }
 
 export default RemoveCookieButton

@@ -3,6 +3,7 @@ import { UserLogin } from '@/types/User/UserLogin'
 import { UserRegister } from '@/types/User/UserRegister'
 import { useCookies } from './CookiesService'
 import { TeacherRegister } from '@/types/Teacher/TeacherRegister'
+import { redirect } from 'next/navigation'
 
 type LoginResponse = {
   userId: number
@@ -17,6 +18,7 @@ type LoginResponse = {
 
 export function useUser() {
   const { setCookie } = useCookies()
+  const { removeCookie } = useCookies()
 
   async function register<T extends UserRegister | TeacherRegister>(
     user: T,
@@ -76,8 +78,16 @@ export function useUser() {
     )
   }
 
+  function logout() {
+    removeCookie('token')
+    removeCookie('user')
+    removeCookie('refreshToken')
+    redirect('/login')
+  }
+
   return {
     register,
     login,
+    logout,
   }
 }
