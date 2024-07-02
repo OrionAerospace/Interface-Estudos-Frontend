@@ -1,6 +1,6 @@
 import { SideBar } from '@/screens/Disciplinas/SideBar'
 import Link from 'next/link'
-import { RemoveCookieButton } from '@/screens/Button/LogoutButton'
+import { LogoutButton } from '@/screens/Logout/LogoutButton'
 
 export default function DisciplinesLayout({ children }: { children: React.ReactNode }) {
   return (
@@ -27,7 +27,7 @@ export default function DisciplinesLayout({ children }: { children: React.ReactN
               </li>
               <li>Opções</li>
               <li>
-                <RemoveCookieButton></RemoveCookieButton>
+                <LogoutButton></LogoutButton>
               </li>
             </ul>
           </nav>

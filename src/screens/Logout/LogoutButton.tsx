@@ -2,7 +2,7 @@
 import { useUser } from '@/services/UserService'
 import { useRouter } from 'next/navigation'
 
-export function RemoveCookieButton() {
+export function LogoutButton() {
   const { logout } = useUser()
   const router = useRouter()
 
