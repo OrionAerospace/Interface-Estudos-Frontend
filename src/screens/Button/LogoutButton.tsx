@@ -1,5 +1,4 @@
 'use client'
-import React from 'react'
 import { useUser } from '@/services/UserService'
 import { useRouter } from 'next/navigation'
 
