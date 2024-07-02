@@ -12,7 +12,9 @@ export default async function Home() {
         <h1>Interface de Estudos</h1>
         <h2>Aprenda cálculo, física e muito mais!</h2>
         <Link href="/cadastro">Cadastrar</Link>
+        <Link href="/login">Entrar</Link>
       </header>
+
       <div className={styles['subjects-container']}>
         <div className={styles['cards-container']}>
           {disciplines.map((discipline) => (

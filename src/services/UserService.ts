@@ -17,6 +17,7 @@ type LoginResponse = {
 
 export function useUser() {
   const { setCookie } = useCookies()
+  const { removeCookie } = useCookies()
 
   async function register<T extends UserRegister | TeacherRegister>(
     user: T,
@@ -33,7 +34,7 @@ export function useUser() {
         throw new Error('Erro ao cadastrar o usuário')
       }
 
-      login(user, isChecked)
+      await login(user, isChecked)
 
       return { error: false, message: 'Usuário cadastrado com sucesso' }
     } catch (err) {
@@ -41,7 +42,6 @@ export function useUser() {
     }
   }
 
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   async function login(user: UserLogin, isChecked: boolean) {
     try {
       const res = await http<LoginResponse>('/auth/signin', {
@@ -51,7 +51,7 @@ export function useUser() {
 
       if (res.status !== 200) throw new Error('Erro ao realizar o login')
 
-      setCookies(res.data)
+      setCookies(res.data, isChecked)
 
       return { error: false, message: 'Usuário logado com sucesso' }
     } catch (err) {
@@ -59,12 +59,14 @@ export function useUser() {
     }
   }
 
-  function setCookies(data: LoginResponse) {
+  function setCookies(data: LoginResponse, isChecked: boolean) {
+    const maxAge = isChecked ? data.expiration : undefined
+
     setCookie('token', data.accessToken, {
-      maxAge: data.expiration,
+      maxAge: maxAge,
     })
     setCookie('refreshToken', data.refreshToken, {
-      maxAge: data.expiration,
+      maxAge: maxAge,
     })
     setCookie(
       'user',
@@ -73,12 +75,19 @@ export function useUser() {
         username: data.username,
         fullName: data.fullName,
       },
-      { maxAge: data.expiration }
+      { maxAge: maxAge }
     )
+  }
+
+  function logout() {
+    removeCookie('token')
+    removeCookie('user')
+    removeCookie('refreshToken')
   }
 
   return {
     register,
     login,
+    logout,
   }
 }
