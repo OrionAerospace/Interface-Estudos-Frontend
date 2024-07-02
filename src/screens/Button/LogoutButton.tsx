@@ -2,25 +2,14 @@
 import { useUser } from '@/services/UserService'
 import { useRouter } from 'next/navigation'
 
-const RemoveCookieButton = () => {
+export function RemoveCookieButton() {
   const { logout } = useUser()
   const router = useRouter()
 
-  const handleLogout = () => {
+  function handleLogout() {
     logout()
+    router.push('/login')
   }
 
-  return (
-    <button
-      type="button"
-      onClick={() => {
-        handleLogout()
-        router.push('/login')
-      }}
-    >
-      Sair
-    </button>
-  )
+  return <button onClick={handleLogout}>Sair</button>
 }
-
-export default RemoveCookieButton
