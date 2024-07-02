@@ -17,6 +17,7 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-hook-form": "^7.49.2",
+    "react-router-dom": "^6.24.0",
     "styled-components": "^6.1.6",
     "tailwind-variants": "^0.1.19",
     "zod": "^3.22.4"

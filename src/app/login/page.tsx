@@ -1,5 +1,4 @@
 'use client'
-
 import styles from './styles.module.scss'
 import { useUser } from '@/services/UserService'
 import { z } from 'zod'

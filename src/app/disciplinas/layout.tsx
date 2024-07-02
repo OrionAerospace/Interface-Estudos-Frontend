@@ -1,4 +1,6 @@
 import { SideBar } from '@/screens/Disciplinas/SideBar'
+import Link from 'next/link'
+import RemoveCookieButton from '@/screens/Button/LogoutButton'
 
 export default function DisciplinesLayout({ children }: { children: React.ReactNode }) {
   return (
@@ -19,8 +21,10 @@ export default function DisciplinesLayout({ children }: { children: React.ReactN
                 <img src="/assets/icons/notification.png" alt="Notificações" className="w-8" />
                 <span>Notificações</span>
               </li>
-              <li>Perfil</li>
+              {/* <li>Perfil</li> */}
+              <Link href="/perfil">Perfil</Link>
               <li>Opções</li>
+              <RemoveCookieButton></RemoveCookieButton>
             </ul>
           </nav>
         </header>
