@@ -9,16 +9,18 @@ import { zodResolver } from '@hookform/resolvers/zod'
 import { Form } from '@/components/Form'
 import { useState } from 'react'
 import Link from 'next/link'
+import { useRouter } from 'next/navigation'
 
 type registerFormData = z.infer<typeof registerFormDataSchema>
 
 export default function Register() {
+  const router = useRouter()
   const { register } = useUser()
 
   const registerUserForm = useForm<registerFormData>({
     resolver: zodResolver(registerFormDataSchema),
   })
-  const { handleSubmit, setValue } = registerUserForm
+  const { handleSubmit } = registerUserForm
 
   const [errorMessage, setErrorMessage] = useState({
     error: false,
@@ -33,15 +35,7 @@ export default function Register() {
       return
     }
 
-    setValue('email', '')
-    setValue('password', '')
-    setValue('fullName', '')
-    setValue('username', '')
-    setValue('course', '')
-    setValue('city', '')
-    setValue('university', '')
-    setValue('confirmPassword', '')
-    setValue('isChecked', false)
+    router.push('/disciplinas?disciplina=Cálculo%20I')
   }
 
   return (

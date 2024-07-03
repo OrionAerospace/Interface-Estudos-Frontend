@@ -30,7 +30,7 @@ export function useUser() {
         data: user,
       })
 
-      if (res.status !== 201) {
+      if (res.status !== 200) {
         throw new Error('Erro ao cadastrar o usuário')
       }
 
