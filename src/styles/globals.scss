@@ -2,21 +2,45 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --primary: #35b2f8;
-  --primary-dark: #05053d;
-  --primary-light: #aedff7;
-  --secondary: #fdd05d;
-  --info: #2c8ced;
-  --success: #60c466;
-  --warning: #ffa13d;
-  --error: #ff6b6b;
-  --light: #f9f9f9;
-  --dark: #2c3e63;
-  --white: #ffffff;
-  --gray: #a5a5a5;
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 84% 4.9%;
+
+    --primary: 222.2 47.4% 11.2%;
+    --primary-foreground: 210 40% 98%;
+
+    --secondary: 210 40% 96.1%;
+    --secondary-foreground: 222.2 47.4% 11.2%;
+
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+
+    --accent: 210 40% 96.1%;
+    --accent-foreground: 222.2 47.4% 11.2%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 222.2 84% 4.9%;
+
+    --radius: 0.5rem;
+  }
 }
 
-body {
-  font-family: var(--font-poppins);
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
 }
