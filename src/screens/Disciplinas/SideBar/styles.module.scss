@@ -1,6 +1,6 @@
 .sidebar {
   width: 80px;
-  background-color: var(--primary-dark);
+  background-color: hsla(236, 82%, 47%, 0.89);
   border-radius: 0 30px 30px 0;
   position: absolute;
   height: 86%;
@@ -21,8 +21,8 @@
   }
 
   a:hover {
-    background-color: var(--primary-light);
-    color: black;
+    background-color: hsla(237, 96%, 33%, 0.89);
+    color: hsla(0, 0%, 100%, 0.89);
   }
 }
 
