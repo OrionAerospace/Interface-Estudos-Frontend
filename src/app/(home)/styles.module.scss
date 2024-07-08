@@ -6,11 +6,11 @@
   min-height: 100vh;
 
   header {
-    background-color: var(--primary-dark);
+    background-color: hsl(200, 15%, 10%);
     width: 100%;
     height: 400px;
     text-align: center;
-    color: var(--white);
+    color: hsl(0, 0%, 100%);
     padding-top: 1rem;
 
     h1 {
@@ -27,8 +27,8 @@
 
     a {
       @apply shadow-primary/50 shadow-default;
-      background-color: var(--primary);
-      color: var(--white);
+      background-color: hsl(200, 15%, 10%);
+      color: hsl(0, 0%, 100%);
       border: none;
       padding: 20px 20px;
       border-radius: 10px;
@@ -43,16 +43,16 @@
       }
 
       &:active {
-        background-color: var(--primary-light);
+        background-color: hsl(200, 20%, 35%);
       }
     }
   }
 }
 
 .subjects-container {
-  background-color: var(--white);
+  background-color: hsl(0, 0%, 100%);
   border-radius: 10px;
-  box-shadow: 0 0 10px var(--primary-dark);
+  box-shadow: 0 0 10px hsl(200, 15%, 10%);
   width: 80%;
   position: relative;
   margin-top: -50px;
@@ -65,7 +65,7 @@
   flex-direction: column;
 
   a {
-    color: var(--primary-dark);
+    color: hsl(200, 15%, 10%);
     text-decoration: none;
     font-weight: bold;
     font-size: 20px;
@@ -86,7 +86,7 @@
 
 .card {
   @apply bg-cyan-100;
-  color: var(--white);
+  color: hsl(0, 0%, 100%);
   padding: 10px;
   border-radius: 8px;
   width: 200px;
@@ -103,19 +103,19 @@
   transition-duration: 300ms;
 
   &:hover {
-    background-color: var(--primary-light);
+    background-color: hsl(200, 20%, 35%);
   }
 }
 
 .footer {
   position: absolute;
-  background-color: var(--primary);
+  background-color: hsl(200, 15%, 10%);
   width: 100%;
   text-align: center;
   bottom: 0;
   padding: 12px 0;
 
   p {
-    color: var(--white);
+    color: hsl(0, 0%, 100%);
   }
 }
