@@ -27,11 +27,11 @@ export function Input({ type = 'text', ...props }: IInputProps) {
         className="outline-none h-14 2xl:h-16 relative tracking-wide w-full bg-bgTertiary border-none px-4 pt-6 pb-2 rounded font-medium text-base lg:text-lg 2xl:text-xl"
         data-testid="input"
       />
-      <i className="field font-medium tracking-wide absolute left-0 px-4 top-1/2 -translate-y-1/2 not-italic text-gray-300 duration-500 pointer-events-none">
+      <i className="field font-medium tracking-wide absolute left-0 px-4 top-1/2 -translate-y-1/2 not-italic text-black duration-500 pointer-events-none">
         {props.field}
       </i>
       {Boolean(errors[props.name]?.message) && (
-        <i className="w-4/5 text-right text-xs 2xl:text-sm font-normal tracking-wide absolute right-0 -top-[14px] px-4 py-5 not-italic text-gray-300 duration-500 pointer-events-none">
+        <i className="w-4/5 text-right text-xs 2xl:text-sm font-normal tracking-wide absolute right-0 -top-[14px] px-4 py-5 not-italic text-blackduration-500 pointer-events-none">
           {errors[props.name]?.message?.toString()}
         </i>
       )}
@@ -75,7 +75,7 @@ const InputBx = styled.div<{ isEmpty: boolean }>`
   input[type='text']:focus,
   input[type='password']:focus {
     outline: none;
-    border-bottom: 0.2rem solid var(--primary);
+    border-bottom: 0.2rem solid hsla(204, 97%, 50%, 0.89);
     box-sizing: border-box;
     padding-bottom: 0.28rem;
   }

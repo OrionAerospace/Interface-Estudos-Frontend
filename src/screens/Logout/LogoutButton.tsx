@@ -11,5 +11,9 @@ export function LogoutButton() {
     router.push('/login')
   }
 
-  return <button onClick={handleLogout}>Sair</button>
+  return (
+    <button onClick={handleLogout} className="text-black">
+      Sair
+    </button>
+  )
 }
