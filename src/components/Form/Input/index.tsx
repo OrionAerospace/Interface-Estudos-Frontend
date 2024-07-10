@@ -31,7 +31,7 @@ export function Input({ type = 'text', ...props }: IInputProps) {
         {props.field}
       </i>
       {Boolean(errors[props.name]?.message) && (
-        <i className="w-4/5 text-right text-xs 2xl:text-sm font-normal tracking-wide absolute right-0 -top-[14px] px-4 py-5 not-italic text-blackduration-500 pointer-events-none">
+        <i className="w-4/5 text-right text-xs 2xl:text-sm font-normal tracking-wide absolute right-0 -top-[14px] px-4 py-5 not-italic text-black duration-500 pointer-events-none">
           {errors[props.name]?.message?.toString()}
         </i>
       )}

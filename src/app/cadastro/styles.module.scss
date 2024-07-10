@@ -61,14 +61,4 @@
   width: 55%;
   justify-content: center;
   align-items: center;
-  escrita {
-    color: hsl(0, 0%, 1%);
-    &:hover {
-      @apply shadow-primary/55 shadow-hover;
-    }
-
-    &:active {
-      background-color: hsl(0, 0%, 100%);
-    }
-  }
 }
