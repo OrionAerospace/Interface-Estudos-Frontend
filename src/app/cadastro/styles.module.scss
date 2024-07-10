@@ -2,15 +2,9 @@
   display: flex;
   width: 100vw;
   height: 100vh;
-  background-color: var(--primary-light);
+  background-color: hsl(180, 20%, 99%);
   background-size: 48px 48px;
-  background-image: repeating-linear-gradient(
-    0deg,
-    var(--primary),
-    var(--primary) 1.8px,
-    var(--light) 1.8px,
-    var(--light)
-  );
+  background-image: hsl(200, 15%, 10%);
 }
 
 .left-section {
@@ -19,8 +13,8 @@
   width: 40vw;
   height: 100vh;
   margin-right: 10px;
-  background-color: var(--primary-dark);
-  color: var(--light);
+  background-color: hsla(204, 97%, 50%, 0.89);
+  color: hsl(0, 0%, 0%);
   justify-content: center;
   align-items: center;
   border-radius: 0px 20px 20px 0px;
@@ -41,8 +35,8 @@
     margin-top: 2rem;
     font-size: 1.25rem;
     @apply shadow-primary/50 shadow-default;
-    background-color: var(--primary);
-    color: var(--white);
+    background-color: hsl(197, 95%, 14%);
+    color: hsl(0, 0%, 100%);
     border: none;
     padding: 1rem 2rem;
     border-radius: 10px;
@@ -55,13 +49,14 @@
     }
 
     &:active {
-      background-color: var(--primary-light);
+      background-color: hsl(0, 0%, 100%);
     }
   }
 }
 
 .right-section {
   display: flex;
+  color: hsla(0, 0%, 3%, 0.89);
   margin: 0 auto;
   width: 55%;
   justify-content: center;

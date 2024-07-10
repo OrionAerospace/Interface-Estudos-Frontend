@@ -11,8 +11,8 @@
 }
 
 .subjects {
-  background-color: var(--primary);
-  color: var(--primary-dark);
+  background-color: hsl(192, 100%, 41%);
+  color: hsl(0, 0%, 100%);
   padding: 20px;
   padding-top: 10px;
   border-radius: 22px;
@@ -28,7 +28,7 @@
 }
 
 .subject-card {
-  background-color: #fff;
+  background-color: hsl(253, 100%, 18%);
   border-radius: 10px;
   padding: 15px;
   margin: 10px 0;

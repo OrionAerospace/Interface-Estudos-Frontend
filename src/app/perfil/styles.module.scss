@@ -2,15 +2,8 @@
   display: flex;
   width: 100vw;
   height: 100vh;
-  background-color: var(--secondary);
+  background-color: hsl(219, 98%, 25%);
   background-size: 48px 48px;
-  background-image: repeating-linear-gradient(
-    0deg,
-    var(--secondary),
-    var(--secondary) 1.8px,
-    var(--light) 1.8px,
-    var(--light)
-  );
 }
 
 .badges-icon {
@@ -24,7 +17,7 @@
   max-width: 600px;
   margin: 30px auto;
   padding: 20px;
-  background-color: var(--light);
+  background-color: hsla(0, 18%, 87%, 0.89);
   border-radius: 20px;
   box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.4);
 }
@@ -71,7 +64,7 @@
   width: 23%;
   padding: 10px;
   border-radius: 8px;
-  background-color: var(--primary-light);
+  background-color: hsl(0, 0%, 100%);
   text-align: center;
 
   p {
@@ -81,7 +74,7 @@
 
   h2 {
     font-size: 22px;
-    color: var(--primary);
+    color: hsl(198, 100%, 50%);
   }
 }
 

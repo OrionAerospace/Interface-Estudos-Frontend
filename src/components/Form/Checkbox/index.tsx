@@ -37,11 +37,11 @@ const LabelContainer = styled.label`
   user-select: none;
 
   &:hover input ~ span {
-    background-color: var(--primary);
+    background-color: hsla(204, 97%, 50%, 0.89);
   }
 
   input:checked ~ span {
-    background-color: var(--primary);
+    background-color: hsla(204, 97%, 50%, 0.89);
 
     &:after {
       display: block;

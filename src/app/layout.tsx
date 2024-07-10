@@ -24,7 +24,7 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="pt-BR">
-      <body className={`${poppins.variable} ${caveat.variable}`}>
+      <body className={`${poppins.variable} ${caveat.variable} font-poppins`}>
         <Providers>
           <Suspense
             fallback={
