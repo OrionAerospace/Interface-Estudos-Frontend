@@ -3,6 +3,7 @@ import { Poppins, Caveat } from 'next/font/google'
 import '@/styles/globals.scss'
 import { Providers } from '@/providers'
 import { Suspense } from 'react'
+import { Toaster } from '@/components/ui/toaster'
 
 const poppins = Poppins({
   weight: ['300', '400', '500', '600', '700'],
@@ -33,6 +34,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               </p>
             }
           >
+            <Toaster />
             {children}
           </Suspense>
         </Providers>
