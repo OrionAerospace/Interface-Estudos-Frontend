@@ -1,11 +1,10 @@
 .sidebar {
   width: 80px;
-  background-color: hsla(236, 82%, 47%, 0.89);
+  background-color: hsl(236, 82%, 47%);
   border-radius: 0 30px 30px 0;
   position: absolute;
   height: 86%;
   overflow-y: auto;
-  opacity: 0.8;
   transition: width 0.3s ease;
   margin-top: 10px;
   overflow-x: hidden;
@@ -21,8 +20,8 @@
   }
 
   a:hover {
-    background-color: hsla(237, 96%, 33%, 0.89);
-    color: hsla(0, 0%, 100%, 0.89);
+    background-color: hsl(237, 96%, 33%);
+    color: hsl(0, 0%, 100%);
   }
 }
 
