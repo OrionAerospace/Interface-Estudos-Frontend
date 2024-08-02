@@ -1,4 +1,5 @@
 'use client'
+
 import styles from './styles.module.scss'
 import { useUser } from '@/services/UserService'
 import { z } from 'zod'
@@ -9,28 +10,27 @@ import { useState } from 'react'
 import Link from 'next/link'
 import { loginFormDataSchema } from '@/zod/schemas/loginFormDataSchema'
 import { useRouter } from 'next/navigation'
-import Latex from 'react-latex'
 import ConversorLatex from '@/components/InputLatex'
 
-type loginFormData = z.infer<typeof loginFormDataSchema>
+type LoginFormData = z.infer<typeof loginFormDataSchema>
 
 export default function Login() {
   const router = useRouter()
   const { login } = useUser()
 
-  const registerUserForm = useForm<loginFormData>({
+  const registerUserForm = useForm<LoginFormData>({
     resolver: zodResolver(loginFormDataSchema),
   })
   const { handleSubmit, setValue } = registerUserForm
 
-  const modifyData = (data: string) => `\ ${data}`
+  const modifyData = (data: string) => `\\ ${data}`
 
   const [errorMessage, setErrorMessage] = useState({
     error: false,
     message: '',
   })
 
-  async function submit(data: loginFormData) {
+  async function submit(data: LoginFormData) {
     const res = await login(data, data.isChecked)
     if (res.error) {
       setErrorMessage({ error: true, message: res.message })
@@ -44,25 +44,12 @@ export default function Login() {
   }
 
   return (
-    <div className={styles['container']}>
+    <div className={styles.container}>
       <aside className={styles['left-section']}>
         <img src="/assets/images/orion.png" alt="Logo da OrionAerospace" className="w-64" />
-        <h2>Ainda não tem uma conta?</h2>
-        <p>Crie uma conta para acessar seus resultados!</p>
+        <ConversorLatex modifyData={modifyData} />
         <Link href="/cadastro">Cadastrar</Link>
       </aside>
-      <main className={styles['right-section']}>
-        <Form.Root form={registerUserForm} onSubmit={handleSubmit(submit)}>
-          <Form.Title className="mb-4 2xl:mb-12 tracking-widest" Tag="h1">
-            Acesse sua conta
-          </Form.Title>
-          <Form.Input type="text" name="username" field="Usuário" />
-          <Form.Input type="password" name="password" field="Senha" />
-          {errorMessage.error && <span className="text-primary-dark">{errorMessage.message}</span>}
-          <Form.CheckBox field="isChecked">Lembrar senha</Form.CheckBox>
-          <Form.SubmitButton>Entrar</Form.SubmitButton>
-        </Form.Root>
-      </main>
     </div>
   )
 }
