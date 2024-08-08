@@ -10,11 +10,11 @@ import { toast, ToastContainer } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 import { mockAddQuestion } from '@/services/QuestionService'
 import { Tag } from '@/types/Tags/Tags'
-import { Question } from '@/types/Questions/Question'
+import { Question, QuestionBase } from '@/types/Questions/Question'
 import { QuestionFormProps } from '@/types/Questions/QuestionFormProps'
 
 export function QuestionForm({ addQuestion }: QuestionFormProps) {
-  const methods = useForm()
+  const methods = useForm<QuestionBase>()
   const { handleSubmit, register, watch } = methods
 
   const [tags, setTags] = useState<Tag[]>([])
@@ -37,7 +37,7 @@ export function QuestionForm({ addQuestion }: QuestionFormProps) {
     (exerciseType === 'generic' || (subject && lessonNumber)) &&
     tags.length > 0
 
-  const onSubmit: SubmitHandler<any> = async (data) => {
+  const onSubmit: SubmitHandler<QuestionBase> = async (data) => {
     const newQuestion: Question = {
       id: `${Date.now()}`, // Gerar ID exclusivo com base no timestamp
       ...data,
