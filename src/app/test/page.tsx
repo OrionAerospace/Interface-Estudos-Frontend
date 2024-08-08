@@ -1,6 +1,6 @@
 'use client'
 import React from 'react'
-import { QuestionForm } from '@/components/QuestionForm/page'
+import { QuestionForm } from '@/screens/QuestionForm/page'
 
 function TestQuestionForm() {
   const mockAddQuestion = (newQuestion: any) => {
@@ -9,9 +9,10 @@ function TestQuestionForm() {
 
   return (
     <div>
-      <h1>Teste de cadastro de questão</h1>
+      <h1>Teste de Criação Questão</h1>
       <QuestionForm addQuestion={mockAddQuestion} />
     </div>
   )
 }
+
 export default TestQuestionForm
