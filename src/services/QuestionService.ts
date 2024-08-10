@@ -1,16 +1,25 @@
-import { Question } from '@/types/Questions/Question'
+import { Question, QuestionBase } from '@/types/Questions/Question'
 
-const mockAddQuestion = (newQuestion: Question): Promise<{ data: Question }> => {
-  return new Promise((resolve, reject) => {
-    setTimeout(() => {
-      const success = Math.random() > 0.2
-      if (success) {
-        resolve({ data: newQuestion })
-      } else {
-        reject(new Error('Failed to add question'))
-      }
-    }, 1000)
-  })
+export function useQuestion() {
+  async function addQuestion(question: QuestionBase): Promise<{ data: Question }> {
+    // Simula um atraso de rede
+    await new Promise((resolve) => setTimeout(resolve, 1000))
+
+    // Simula uma resposta de sucesso com a questão adicionada
+    return {
+      data: {
+        ...question,
+        id: `${Date.now()}`, // gerado pelo backend
+        creationDate: new Date().toISOString(), // gerado pelo backend
+        correctCount: 0, // gerado pelo backend
+        incorrectCount: 0, // gerado pelo backend
+        displayNumber: 1, // gerado pelo backend
+        creatorId: 'exampleCreatorId', // gerado pelo backend
+      },
+    }
+  }
+
+  return {
+    addQuestion,
+  }
 }
-
-export { mockAddQuestion }
