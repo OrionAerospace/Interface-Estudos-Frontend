@@ -4,14 +4,14 @@ import { QuestionForm } from '@/screens/QuestionForm/page'
 import { Question } from '@/types/Questions/Question'
 
 function TestQuestionForm() {
-  const mockAddQuestion = (newQuestion: Question) => {
-    console.log('Question added:', newQuestion)
+  const addQuestion = (newQuestion: Question) => {
+    console.log('Questão adicionada:', newQuestion)
   }
 
   return (
     <div>
-      <h1>Teste criação de questão</h1>
-      <QuestionForm addQuestion={mockAddQuestion} />
+      <h1>Teste do Formulário de Questão</h1>
+      <QuestionForm addQuestion={addQuestion} />
     </div>
   )
 }
