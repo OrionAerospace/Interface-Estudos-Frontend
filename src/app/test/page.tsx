@@ -1,6 +1,6 @@
 'use client'
 import React from 'react'
-import { QuestionForm } from '@/screens/QuestionForm/page'
+import { QuestionForm } from '@/screens/QuestionForm/index'
 
 function TestQuestionForm() {
   return (
