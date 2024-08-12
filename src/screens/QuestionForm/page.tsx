@@ -1,12 +1,11 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { useForm, FormProvider, SubmitHandler } from 'react-hook-form'
 import { FormControl, FormLabel, FormItem, FormField, FormMessage } from '@/components/ui/form'
 import { Input } from '@/components/ui/input'
 import { Button } from '@/components/ui/button'
 import { Textarea } from '@/components/ui/textarea'
 import { useQuestion } from '@/services/QuestionService'
-import { Tag } from '@/types/Tags/Tags'
-import { Question, QuestionBase } from '@/types/Questions/Question'
+import { QuestionBase } from '@/types/Questions/Question'
 import { useToast } from '@/components/ui/use-toast'
 import {
   Select,
@@ -18,11 +17,7 @@ import {
 import { questionSchema } from '@/zod/schemas/utils/questionSchema'
 import { zodResolver } from '@hookform/resolvers/zod'
 
-interface QuestionFormProps {
-  addQuestion: (newQuestion: Question) => void
-}
-
-export function QuestionForm({ addQuestion }: QuestionFormProps) {
+export function QuestionForm() {
   const methods = useForm<QuestionBase>({
     resolver: zodResolver(questionSchema),
   })
@@ -30,38 +25,29 @@ export function QuestionForm({ addQuestion }: QuestionFormProps) {
   const { toast } = useToast()
   const { addQuestion: addQuestionService } = useQuestion()
 
-  const [tags, setTags] = useState<Tag[]>([])
-  const [tagInput, setTagInput] = useState<string>('')
-
   const onSubmit: SubmitHandler<QuestionBase> = async (data) => {
-    const newQuestion: QuestionBase = {
-      ...data,
-      tags,
-    }
-
     try {
-      const response = await addQuestionService(newQuestion)
-      addQuestion(response.data)
+      // Adiciona a nova questão
+      /*const response =*/ await addQuestionService(data)
+
+      // Exibe a questão criada no console
+      // console.log('Questão criada:', response.data)
+
+      // Mostra uma notificação de sucesso
       toast({
-        title: 'Successo',
-        description: 'Questão Criada com sucesso!',
+        title: 'Sucesso',
+        description: 'Questão criada com sucesso!',
       })
     } catch (error) {
+      // Mostra uma notificação de erro
       toast({
         title: 'Erro',
         description: 'Falha ao criar a questão',
       })
     }
 
+    // Reseta o formulário
     reset()
-    setTags([])
-    setTagInput('')
-  }
-  const handleAddTag = () => {
-    if (tagInput && !tags.some((tag) => tag.name === tagInput) && tags.length < 3) {
-      setTags([...tags, { id: `${Date.now()}`, name: tagInput }])
-      setTagInput('')
-    }
   }
 
   return (
@@ -167,21 +153,6 @@ export function QuestionForm({ addQuestion }: QuestionFormProps) {
             />
           </>
         )}
-
-        <FormItem>
-          <FormLabel>Tags (até 3):</FormLabel>
-          <div>
-            {tags.map((tag, index) => (
-              <span key={index}>{tag.name}</span>
-            ))}
-          </div>
-          <FormControl>
-            <Input value={tagInput} onChange={(e) => setTagInput(e.target.value)} />
-          </FormControl>
-          <Button type="button" onClick={handleAddTag}>
-            Criar Tag
-          </Button>
-        </FormItem>
 
         <Button type="submit">Criar Questão</Button>
       </form>
