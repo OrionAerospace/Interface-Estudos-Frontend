@@ -26,7 +26,7 @@ export function QuestionForm() {
       tags: [], // Inicializa as tags como um array vazio
     },
   })
-  const { handleSubmit, control, reset } = methods
+  const { handleSubmit, control, reset, watch } = methods
   const { toast } = useToast()
   const { addQuestion: addQuestionService } = useQuestion()
 
@@ -36,7 +36,7 @@ export function QuestionForm() {
       /*const response =*/ await addQuestionService(data)
 
       // Exibe a questão criada no console
-      // console.log('Questão criada:', response.data)
+      //console.log('Questão criada:', response.data)
 
       // Mostra uma notificação de sucesso
       toast({
@@ -62,6 +62,7 @@ export function QuestionForm() {
     <FormProvider {...methods}>
       <form onSubmit={handleSubmit(onSubmit)}>
         <FormField
+          defaultValue=""
           control={control}
           name="question"
           render={({ field }) => (
@@ -90,6 +91,7 @@ export function QuestionForm() {
         />
 
         <FormField
+          defaultValue=""
           control={control}
           name="response"
           render={({ field }) => (
@@ -104,13 +106,14 @@ export function QuestionForm() {
         />
 
         <FormField
+          defaultValue=""
           control={control}
           name="exerciseType"
           render={({ field }) => (
             <FormItem>
               <FormLabel>Tipo de Exercício:</FormLabel>
               <FormControl>
-                <Select onValueChange={field.onChange} value={field.value}>
+                <Select onValueChange={field.onChange} defaultValue={field.value}>
                   <SelectTrigger>
                     <SelectValue placeholder="Selecione o tipo de exercício" />
                   </SelectTrigger>
@@ -125,7 +128,41 @@ export function QuestionForm() {
           )}
         />
 
-        {/* MultiSelect sem opções pré-definidas */}
+        {watch('exerciseType') === 'fixation' && (
+          <>
+            <FormField
+              defaultValue=""
+              control={control}
+              name="subject"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Disciplina:</FormLabel>
+                  <FormControl>
+                    <Input {...field} />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+
+            <FormField
+              defaultValue=""
+              control={control}
+              name="lessonNumber"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Número da aula:</FormLabel>
+                  <FormControl>
+                    <Input {...field} />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+          </>
+        )}
+
+        {/* Adicionando o MultiSelect para as tags */}
         <FormField
           control={control}
           name="tags"
@@ -140,7 +177,7 @@ export function QuestionForm() {
                       : []
                   }
                   onValueChange={(selected: string[]) => field.onChange(selected)}
-                  options={[]}
+                  options={[]} // Sem opções no momento
                 />
               </FormControl>
               <FormMessage />
