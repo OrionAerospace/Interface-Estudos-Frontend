@@ -1,5 +1,5 @@
 import React from 'react'
-import TimerButtons from '@/components/TimerButtons'
+import TimerButtons from '@/components/TimerButtons' // Ajuste o caminho conforme necessário
 
 const App = () => {
   const buttonData = [
