@@ -9,7 +9,7 @@ import { Form } from '@/components/Form' // Presumo que o Form seja necessário,
 import Link from 'next/link'
 import { loginFormDataSchema } from '@/zod/schemas/loginFormDataSchema'
 import { useRouter } from 'next/navigation'
-import ConversorLatex from '@/components/InputLatex'
+import { InputLatex } from '@/components/InputLatex'
 import TimedButton from '@/components/TimedButton' // Certifique-se de que o caminho esteja correto
 import React, { useState } from 'react'
 
@@ -48,7 +48,7 @@ export default function Login() {
     <div className={styles.container}>
       <aside className={styles['left-section']}>
         <img src="/assets/images/orion.png" alt="Logo da OrionAerospace" className="w-64" />
-        <ConversorLatex modifyData={modifyData} />
+        <InputLatex />
         <TimedButton timeout={5000} onClick={() => alert('Botão clicado!')} />
         <Link href="/cadastro">Cadastrar</Link>
       </aside>

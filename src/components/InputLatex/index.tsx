@@ -2,7 +2,7 @@ import MathInput from 'react-math-keyboard'
 import React, { useState } from 'react'
 import { Button } from '../ui/button'
 
-export default function App() {
+export function InputLatex() {
   const [valor1, setValue1] = useState('')
 
   const clear = () => {
@@ -10,7 +10,7 @@ export default function App() {
   }
 
   return (
-    <div className="App">
+    <div>
       <div>
         <p style={{ fontSize: '2rem' }}>Escreva a formula :</p>
         <MathInput

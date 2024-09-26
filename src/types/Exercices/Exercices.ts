@@ -1,5 +1,11 @@
 export type Exercice = {
   name: string
-  date: string
+  date: Date
   details: string
+  resposta: {
+    id: number
+    texto: string
+    correta: boolean
+  }[]
+  dica: string
 }

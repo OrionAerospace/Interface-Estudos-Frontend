@@ -1,4 +1,5 @@
-import { Button } from '@/components/ui/button'
+'use client'
+import styles from './styles.module.scss'
 import {
   Table,
   TableBody,
@@ -9,6 +10,8 @@ import {
   TableHeader,
   TableRow,
 } from '@/components/ui/table'
+import { Button } from '@/components/ui/button'
+import { useRouter } from 'next/navigation'
 
 const invoices = [
   {
@@ -17,12 +20,7 @@ const invoices = [
     totalAmount: '$250.00',
     paymentMethod: 'Credit Card',
   },
-  {
-    invoice: 'INV002',
-    paymentStatus: 'Pending',
-    totalAmount: '$150.00',
-    paymentMethod: 'PayPal',
-  },
+  { invoice: 'INV002', paymentStatus: 'Pending', totalAmount: '$150.00', paymentMethod: 'PayPal' },
   {
     invoice: 'INV003',
     paymentStatus: 'Unpaid',
@@ -35,12 +33,7 @@ const invoices = [
     totalAmount: '$450.00',
     paymentMethod: 'Credit Card',
   },
-  {
-    invoice: 'INV005',
-    paymentStatus: 'Paid',
-    totalAmount: '$550.00',
-    paymentMethod: 'PayPal',
-  },
+  { invoice: 'INV005', paymentStatus: 'Paid', totalAmount: '$550.00', paymentMethod: 'PayPal' },
   {
     invoice: 'INV006',
     paymentStatus: 'Pending',
@@ -55,31 +48,46 @@ const invoices = [
   },
 ]
 
-export default function TableDemo() {
+export default function InvoicesPage() {
+  const router = useRouter()
+
   return (
-    <Table>
-      <TableCaption>A list of your recent invoices.</TableCaption>
-      <TableHeader>
-        <TableRow>
-          <TableHead className="w-[100px]">Invoice</TableHead>
-          <TableHead>Status</TableHead>
-          <TableHead>Method</TableHead>
-          <TableHead className="text-right">Amount</TableHead>
-        </TableRow>
-      </TableHeader>
-      <TableBody>
-        {invoices.map((invoice) => (
-          <TableRow key={invoice.invoice}>
-            <TableCell className="font-medium">{invoice.invoice}</TableCell>
-            <TableCell>{invoice.paymentStatus}</TableCell>
-            <TableCell>{invoice.paymentMethod}</TableCell>
-            <TableCell className="text-right">
-              {' '}
-              <Button variant={'destructive'}>{invoice.totalAmount}</Button>
-            </TableCell>
-          </TableRow>
-        ))}
-      </TableBody>
-    </Table>
+    <div className={styles['container']}>
+      <aside className={styles['left-section']}>
+        <h2>Menu</h2>
+        <nav>
+          <ul>
+            <li onClick={() => router.push('/home')}>Home</li>
+            <li onClick={() => router.push('/invoices')}>Invoices</li>
+            <li onClick={() => router.push('/profile')}>Profile</li>
+          </ul>
+        </nav>
+      </aside>
+      <main className={styles['right-section']}>
+        <Table>
+          <TableCaption>A list of your recent invoices.</TableCaption>
+          <TableHeader>
+            <TableRow>
+              <TableHead className="w-[100px]">Invoice</TableHead>
+              <TableHead>Status</TableHead>
+              <TableHead>Method</TableHead>
+              <TableHead className="text-right">Amount</TableHead>
+            </TableRow>
+          </TableHeader>
+          <TableBody>
+            {invoices.map((invoice) => (
+              <TableRow key={invoice.invoice}>
+                <TableCell className="font-medium">{invoice.invoice}</TableCell>
+                <TableCell>{invoice.paymentStatus}</TableCell>
+                <TableCell>{invoice.paymentMethod}</TableCell>
+                <TableCell className="text-right">
+                  <Button variant={'destructive'}>{invoice.totalAmount}</Button>
+                </TableCell>
+              </TableRow>
+            ))}
+          </TableBody>
+        </Table>
+      </main>
+    </div>
   )
 }
