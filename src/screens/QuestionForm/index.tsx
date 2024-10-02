@@ -59,133 +59,134 @@ export function QuestionForm() {
 
   return (
     <FormProvider {...methods}>
-      <form onSubmit={handleSubmit(onSubmit)}>
-        <FormField
-          defaultValue=""
-          control={control}
-          name="question"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>Enunciado:</FormLabel>
-              <FormControl>
-                <Input {...field} />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
+      <div className="flex justify-center items-center gap-4">
+        <form onSubmit={handleSubmit(onSubmit)}>
+          <FormField
+            defaultValue=""
+            control={control}
+            name="question"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Enunciado:</FormLabel>
+                <FormControl>
+                  <Input {...field} />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+
+          <FormField
+            control={control}
+            name="details"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Detalhamento/Explicação:</FormLabel>
+                <FormControl>
+                  <Textarea {...field} />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+
+          <FormField
+            defaultValue=""
+            control={control}
+            name="response"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Resposta:</FormLabel>
+                <FormControl>
+                  <Input {...field} />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+
+          <FormField
+            defaultValue=""
+            control={control}
+            name="exerciseType"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Tipo de Exercício:</FormLabel>
+                <FormControl>
+                  <Select onValueChange={field.onChange} defaultValue={field.value}>
+                    <SelectTrigger>
+                      <SelectValue placeholder="Selecione o tipo de exercício" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectItem value="fixation">Tipo fixação</SelectItem>
+                      <SelectItem value="generic">Tipo genérico</SelectItem>
+                    </SelectContent>
+                  </Select>
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+
+          {watch('exerciseType') === 'fixation' && (
+            <>
+              <FormField
+                defaultValue=""
+                control={control}
+                name="subject"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Disciplina:</FormLabel>
+                    <FormControl>
+                      <Input {...field} />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+
+              <FormField
+                defaultValue=""
+                control={control}
+                name="lessonNumber"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Número da aula:</FormLabel>
+                    <FormControl>
+                      <Input {...field} />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+            </>
           )}
-        />
 
-        <FormField
-          control={control}
-          name="details"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>Detalhamento/Explicação:</FormLabel>
-              <FormControl>
-                <Textarea {...field} />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-
-        <FormField
-          defaultValue=""
-          control={control}
-          name="response"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>Resposta:</FormLabel>
-              <FormControl>
-                <Input {...field} />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-
-        <FormField
-          defaultValue=""
-          control={control}
-          name="exerciseType"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>Tipo de Exercício:</FormLabel>
-              <FormControl>
-                <Select onValueChange={field.onChange} defaultValue={field.value}>
-                  <SelectTrigger>
-                    <SelectValue placeholder="Selecione o tipo de exercício" />
-                  </SelectTrigger>
-                  <SelectContent>
-                    <SelectItem value="fixation">Tipo fixação</SelectItem>
-                    <SelectItem value="generic">Tipo genérico</SelectItem>
-                  </SelectContent>
-                </Select>
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-
-        {watch('exerciseType') === 'fixation' && (
-          <>
-            <FormField
-              defaultValue=""
-              control={control}
-              name="subject"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Disciplina:</FormLabel>
-                  <FormControl>
-                    <Input {...field} />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-
-            <FormField
-              defaultValue=""
-              control={control}
-              name="lessonNumber"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Número da aula:</FormLabel>
-                  <FormControl>
-                    <Input {...field} />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-          </>
-        )}
-
-        {/* Adicionando o MultiSelect para as tags */}
-        <FormField
-          control={control}
-          name="tags"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>Tags:</FormLabel>
-              <FormControl>
-                <MultiSelect
-                  value={
-                    Array.isArray(field.value)
-                      ? transformTagsToStringArray(field.value as Tag[])
-                      : []
-                  }
-                  onValueChange={(selected: string[]) => field.onChange(selected)}
-                  options={[]} // Sem opções no momento
-                />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-
-        <Button type="submit">Criar Questão</Button>
-      </form>
+          {/* Adicionando o MultiSelect para as tags */}
+          <FormField
+            control={control}
+            name="tags"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Tags:</FormLabel>
+                <FormControl>
+                  <MultiSelect
+                    value={
+                      Array.isArray(field.value)
+                        ? transformTagsToStringArray(field.value as Tag[])
+                        : []
+                    }
+                    onValueChange={(selected: string[]) => field.onChange(selected)}
+                    options={[]} // Sem opções no momento
+                  />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+          <Button type="submit">Criar Questão</Button>
+        </form>
+      </div>
     </FormProvider>
   )
 }
