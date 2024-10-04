@@ -65,7 +65,7 @@ export function QuestionForm() {
           control={control}
           name="question"
           render={({ field }) => (
-            <FormItem className="w-56">
+            <FormItem className="w-full">
               <FormLabel> Enunciado:</FormLabel>
               <FormControl>
                 <Input {...field} />
@@ -79,7 +79,7 @@ export function QuestionForm() {
           control={control}
           name="details"
           render={({ field }) => (
-            <FormItem className="w-56">
+            <FormItem className="w-full">
               <FormLabel>Detalhamento/Explicação:</FormLabel>
               <FormControl>
                 <Textarea {...field} />
@@ -94,7 +94,7 @@ export function QuestionForm() {
           control={control}
           name="response"
           render={({ field }) => (
-            <FormItem className="w-56">
+            <FormItem className="w-full">
               <FormLabel>Resposta:</FormLabel>
               <FormControl>
                 <Input {...field} />
@@ -109,7 +109,7 @@ export function QuestionForm() {
           control={control}
           name="exerciseType"
           render={({ field }) => (
-            <FormItem className="w-56">
+            <FormItem className="w-full">
               <FormLabel>Tipo de Exercício:</FormLabel>
               <FormControl>
                 <Select onValueChange={field.onChange} defaultValue={field.value}>
@@ -134,7 +134,7 @@ export function QuestionForm() {
               control={control}
               name="subject"
               render={({ field }) => (
-                <FormItem className="w-56">
+                <FormItem className="w-full">
                   <FormLabel>Disciplina:</FormLabel>
                   <FormControl>
                     <Input {...field} />
@@ -149,7 +149,7 @@ export function QuestionForm() {
               control={control}
               name="lessonNumber"
               render={({ field }) => (
-                <FormItem className="w-56">
+                <FormItem className="w-full">
                   <FormLabel>Número da aula:</FormLabel>
                   <FormControl>
                     <Input {...field} />
@@ -166,7 +166,7 @@ export function QuestionForm() {
           control={control}
           name="tags"
           render={({ field }) => (
-            <FormItem className="w-56">
+            <FormItem className="w-full">
               <FormLabel>Tags:</FormLabel>
               <FormControl>
                 <MultiSelect
