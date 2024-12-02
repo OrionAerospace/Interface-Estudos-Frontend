@@ -51,6 +51,7 @@ export function QuestionForm() {
     }
 
     // Reseta o formulário
+
     reset()
   }
   function transformTagsToStringArray(tags: Tag[]): string[] {

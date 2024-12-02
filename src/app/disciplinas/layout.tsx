@@ -18,13 +18,13 @@ export default function DisciplinesLayout({ children }: { children: React.ReactN
           <nav className="flex items-center justify-center px-10 h-full bg-primary-dark text-white rounded-bl-3xl">
             <ul className="flex items-center auto gap-6 justify-between">
               <li className="flex items-center">
-                <img src="/assets/icons/notification.png" alt="Notificações" className="w-8" />
-                <span className="text-black">Notificações</span>
+                {/* <img src="/assets/icons/notification.png" alt="Notificações" className="w-8" />
+                <span className="text-black">Notificações</span>  não ira aparecer nesse prototipo só na fase final, devido o curto prazo de entrega */}
               </li>
               <li className="text-black">
                 <Link href="/perfil">Perfil</Link>
               </li>
-              <li className="text-black">Opções</li>
+              {/* <li className="text-black">Opções</li> não ira aparecer nesse prototipo só na fase final, devido o curto prazo de entrega*/}
               <li>
                 <LogoutButton></LogoutButton>
               </li>
