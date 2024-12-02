@@ -14,6 +14,7 @@ export default function Profile() {
           </div>
           <img src="/assets/images/orion.png" alt="Foto de perfil" />
         </div>
+        {/* 
         <div className={styles['stats']}>
           <div className={styles['item']}>
             <p>Pré-cálculo</p>
@@ -40,7 +41,7 @@ export default function Profile() {
           <img src="/assets/badges/mountain.png" alt="" />
           <img src="/assets/badges/plex.png" alt="" />
           <img src="/assets/badges/rank.png" alt="" />
-        </div>
+        </div> não ira aparecer nesse prototipo só na fase final, devido o curto prazo de entrega */}
       </div>
     </div>
   )
